@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sort.model.Tarefa;
 import com.sort.model.Usuario;
-
+import com.sort.repository.TarefaRepository;
 import com.sort.repository.UsuarioRepository;
 import com.sort.service.TarefaService;
 import com.sort.service.UsuarioService;
@@ -21,6 +21,9 @@ public class SortAbstractController {
 
 	@Autowired
 	protected UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	protected TarefaRepository tarefaRepository;
 	
 	@Autowired
 	protected TarefaService tarefaService;
@@ -37,8 +40,8 @@ public class SortAbstractController {
 		List<Usuario> listaUsuarioTipo = usuarioRepository.findAll();
 		modelAndView.addObject("listarUsuarios", listaUsuarioTipo);
 		
-		List<Tarefa> listaTarefa =tarefaService.findAllTarefa();
-		
+		//List<Tarefa> listaTarefa =tarefaService.findAllTarefa();
+		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
 		
 
 		if (getUsuarioLogado() != null) {
@@ -46,7 +49,7 @@ public class SortAbstractController {
 			modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 					+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
 			modelAndView.addObject("adminMessage", "Acesso restrito apenas para usuários Administradores!");
-			modelAndView.addObject("listarTarefas", listaTarefa);
+			modelAndView.addObject("listarTarefas", listaTarefaMes);
 		} else {
 			modelAndView.addObject("userTipo", 4);
 		}

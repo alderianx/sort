@@ -62,6 +62,8 @@ public class TarefaController extends SortAbstractController {
 	@RequestMapping(value = "/listarTarefa", method = RequestMethod.GET)
 	public ModelAndView listarTarefas() {
 		ModelAndView modelAndView = new ModelAndView("index");
+		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
+		modelAndView.addObject("listarTarefasMes", listaTarefaMes);
 		
 		List<Tarefa> listaTarefa =tarefaService.findAllTarefa();
 		modelAndView.addObject("listarTarefas", listaTarefa);

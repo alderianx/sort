@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.sort.controller.SortAbstractController;
@@ -86,6 +87,10 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 		
 	}
 
+	
+
+	
+	
 
 
 }

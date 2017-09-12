@@ -22,13 +22,16 @@
 
 				<div class="row" th:replace="layout :: sort-header"></div>
 
-				
+
 				<div class="row">
-					<div class="col-md-8">
+					<div class="col-md-12">
 						<div class="panel">
 							<div class="panel-body">
+							 <span th:text="${#calendars.format(#dates.createNow(),' MMMM yyyy')}"></span>
 								<div class="table-responsive">
+								
 									<table class="table table-hover table-striped">
+									
 										<thead>
 											<tr>
 												<th>#</th>
@@ -38,19 +41,26 @@
 												<th>N&ordm; de Erros</th>
 												<th>Erros no Caminho Feliz</th>
 												<!-- <th>Tempo Gasto</th> -->
+												<th>Fluxo</th>
+												<th>M&oacute;dulo</th>
+												<th>Tipo de Erro</th>
 												<th>Status</th>
+												
 												<th>Ver</th>
 											</tr>
 										</thead>
 										<tbody>
 
-											<tr th:each="tarefa,row : ${listarTarefas}">
+											<tr th:each="tarefa,row : ${listarTarefasMes}">
 												<td th:text="${row.count}"></td>
 												<td th:text="${tarefa.numeroTarefa}"></td>
-												<td th:text="${tarefa.dataCriacao}"></td>
+												<td	th:text="${#calendars.format(tarefa.fimTeste,'dd MMMM yyyy')}"></td>
 												<td th:text="${tarefa.usuario.nome}"></td>
 												<td th:text="${tarefa.qtdErros}"></td>
 												<td th:text="${tarefa.erroCaminhoFeliz}"></td>
+												<td th:text="${tarefa.fluxo.nome}"></td>
+												<td th:text="${tarefa.modulo.nome}"></td>
+												<td th:text="${tarefa.erroTipo.nome}"></td>
 												<td th:text="${tarefa.status.nome}"></td>
 												<td><a href="#" class="btn btn-default btn-xs">Ver</a></td>
 											</tr>

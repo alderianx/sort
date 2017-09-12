@@ -4,10 +4,10 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
+
+
 import com.sort.form.TarefaCadastroForm;
 import com.sort.model.Tarefa;
-
-
 
 public interface TarefaService {
 
@@ -16,4 +16,8 @@ public interface TarefaService {
 	public Date toDate(String dateConvert) throws ParseException;
 
 	public List<Tarefa> findAllTarefa();
+
+
+
+	
 }
