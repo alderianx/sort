@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: css-head"></head>
+<body>
+
+	<!-- Wrapper-->
+	<div class="wrapper">
+
+		<!-- Header-->
+		<header th:replace="layout :: site-header"></header>
+		<!-- End header-->
+
+		<!-- Navigation-->
+		<div th:replace="layout :: site-navegation"></div>
+
+		<!-- End navigation-->
+
+
+		<!-- Main content-->
+		<section class="content">
+			<div class="container-fluid">
+
+
+
+				<div class="container lg animated slideInDown">
+
+
+
+
+					<div class="view-header">
+						<div class="header-icon">
+							<i class="pe page-header-icon pe-7s-note"></i>
+						</div>
+						<div class="header-title">
+							<h3>Registro de Teste</h3>
+							<small> Por favor, entre com os dados para registro! </small>
+						</div>
+					</div>
+
+					<div class="panel panel-filled">
+						<div class="panel-body">
+
+							<div class="row">
+								<div class="form-group col-md-2">
+									<label class="control-label">Inicio do Teste:</label>
+									<button class="btn btn-w-md btn-default" type="submit"
+										onclick="if(document.getElementById('fieldset').disabled==true ||document.getElementById('fieldset').disabled==false ){ document.getElementById('fieldset').disabled=false; document.getElementById('cadTime').value= '';funcao(); }">Come&ccedil;ar</button>
+								</div>
+								<div class="form-group col-md-2">
+									<h4>
+										<label class="control-label"><span id="cadTime"></span></label>
+									</h4>
+								</div>
+							</div>
+
+							<fieldset class="form-group" name="fieldset" id="fieldset"
+								disabled="disabled">
+								<form class="form-group" th:object="${tarefaCadastroForm}"
+									data-toggle="validator" role="form" method="POST"
+									id="cadTarefaForm" novalidate="novalidate">
+
+									<div class="alert alert-success" th:text="${successMessage}"
+										th:if="${not #strings.isEmpty(successMessage)}"></div>
+
+									<div class="alert alert-danger"
+										th:if="${#fields.hasAnyErrors()}">
+										<div th:each="detailedError : ${#fields.detailedErrors()}">
+											<span th:text="${detailedError.message}"></span>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-6" hidden="true">
+										<label></label> <input id="inicioTeste" class="form-control "
+											type="text" th:field="*{inicioTeste}" /> <span
+											class="help-block small"></span>
+									</div>
+
+									<div class="row">
+										<div class="form-group col-lg-6">
+											<label>Testador:</label>
+											<h4>
+												<label> <span th:utext="${userNome}"></span></label>
+											</h4>
+											<span class="help-block small"></span>
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-lg-6"
+											th:classappend="${#fields.hasErrors('numeroTarefa')} ? has-error">
+											<label>N&ordm; da Tarefa:</label> <input
+												class="form-control " min="0" max="9999999" type="number"
+												th:field="*{numeroTarefa}" /> <span
+												class="help-block small"></span>
+										</div>
+
+										<div class="form-group col-md-4"
+											th:classappend="${#fields.hasErrors('erroCaminhoFeliz')} ? has-error">
+											<label for="status" class="control-label">Erro no
+												Caminho Feliz:</label><input type="radio"
+												th:field="*{erroCaminhoFeliz}" value="true" />SIM <input
+												type="radio" th:field="*{erroCaminhoFeliz}" value="false" />N&Atilde;O
+											<label th:if="${#fields.hasErrors('erroCaminhoFeliz')}"
+												th:text="#{error.erroCaminhoFeliz}" th:class="'error'">Error
+											</label>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="form-group col-lg-6"
+											th:classappend="${#fields.hasErrors('qtdErros')} ? has-error">
+											<label for="qtdErros" class="control-label">N&ordm;
+												de Erros Encontrados:</label><input class="form-control " min="0"
+												max="9999999" type="number" th:field="*{qtdErros}" /> <span
+												class="help-block small"></span>
+										</div>
+
+										<div class="form-group col-lg-6"
+											th:classappend="${#fields.hasErrors('erroTipo')} ? has-error">
+											<label for="erroTipo" class="control-label">Tipo de
+												Erro:</label><select class="form-control " th:field="*{erroTipo}">
+												<option value=""></option>
+												<option th:each="erroTipo : ${erroTipoLista}"
+													th:value="${erroTipo.nome}" th:text="${erroTipo.nome}"></option>
+											</select> <span class="help-block small"></span>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="form-group col-lg-6"
+											th:classappend="${#fields.hasErrors('fluxo')} ? has-error">
+											<label for="fluxo" class="control-label">Fluxo:</label><select
+												class="form-control " th:field="*{fluxo}">
+												<option value=""></option>
+												<option th:each="fluxo : ${fluxoLista}"
+													th:value="${fluxo.nome}" th:text="${fluxo.nome}"></option>
+											</select>
+										</div>
+
+										<div class="form-group col-lg-6"
+											th:classappend="${#fields.hasErrors('tipo')} ? has-error">
+											<label for="tipo" class="control-label">Tipo de
+												Teste:</label><select class="form-control " th:field="*{tipo}">
+												<option value=""></option>
+												<option th:each="tipo : ${tarefaTipoLista}"
+													th:value="${tipo.nome}" th:text="${tipo.nome}"></option>
+											</select>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="form-group col-lg-6"
+											th:classappend="${#fields.hasErrors('modulo')} ? has-error">
+											<label for="modulo" class="control-label">M&oacute;dulo:</label><select
+												class="form-control " th:field="*{modulo}">
+												<option value=""></option>
+												<option th:each="modulo : ${moduloLista}"
+													th:value="${modulo.nome}" th:text="${modulo.nome}"></option>
+											</select> <span class="help-block small"></span>
+										</div>
+										<div class="form-group col-lg-6"
+											th:classappend="${#fields.hasErrors('status')} ? has-error">
+											<label for="status" class="control-label">Status:</label> <select
+												class="form-control " th:field="*{status}">
+												<option value=""></option>
+												<option th:each="status : ${statusLista}"
+													th:value="${status.nome}" th:text="${status.nome}"></option>
+											</select><span class="help-block small"></span>
+										</div>
+									</div>
+
+
+									<div>
+										<button class="btn btn-w-md btn-success" type="submit">Cadastrar</button>
+										<!--  <a class="btn btn-default" href="login.htm">Login</a> -->
+									</div>
+
+								</form>
+							</fieldset>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End main content-->
+
+	</div>
+	<!-- End wrapper-->
+
+	<div th:replace="layout :: script-footer"></div>
+	<!-- Vendor scripts -->
+
+
+
+</body>
+
+</html>

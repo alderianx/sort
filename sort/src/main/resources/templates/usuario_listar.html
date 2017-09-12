@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: css-head"></head>
+<body>
+
+	<!-- Wrapper-->
+	<div class="wrapper">
+
+		<!-- Header-->
+		<header th:replace="layout :: site-header"></header>
+		<!-- End header-->
+
+		<!-- Navigation-->
+		<div th:replace="layout :: site-navegation"></div>
+
+		<!-- End navigation-->
+
+
+		<!-- Main content-->
+		<section class="content">
+			<div class="container-fluid">
+
+				<div class="row" th:fragment="sort-header">
+					<div class="col-lg-12">
+						<div class="view-header">
+
+							<div class="header-icon">
+
+								<i class="pe page-header-icon pe-7s-users"></i>
+							</div>
+							<div class="header-title">
+								<h3 class="m-b-xs">Listagem de Usu&aacute;rios</h3>
+								<small> Sistema Obl&iacute;quo de Relat&oacute;rio de
+									Teste. </small>
+							</div>
+						</div>
+						<hr />
+					</div>
+				</div>
+
+				<div class="row" th:replace="layout :: sort-header"></div>
+
+
+				<div class="row">
+					<div class="col-md-8">
+						<div class="panel">
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table table-hover table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Nome</th>
+												<th>Telefone</th>
+												<th>E-mail</th>
+												<th>Data Nascimento</th>
+												<th>City</th>
+												<th>Ver</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="usuario,row : ${listarUsuarios}">
+												<td th:text="${row.count}"></td>
+												<td th:text="${usuario.nome}"></td>
+												<td th:text="${usuario.telefone}"></td>
+												<td th:text="${usuario.email}"></td>
+												<td th:text="${usuario.nascimento}">
+												<div class="sparkline8"></div></td>
+												<td>Vosselaar</td>
+												<td><a href="#" class="btn btn-default btn-xs">Ver</a></td>
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+		</section>
+		<!-- End main content-->
+
+	</div>
+
+	<!-- End wrapper-->
+
+	<div th:replace="layout :: script-footer"></div>
+	<!-- Vendor scripts -->
+
+</body>
+
+</html>

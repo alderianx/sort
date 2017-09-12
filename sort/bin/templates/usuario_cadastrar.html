@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: css-head"></head>
+<body>
+
+	<!-- Wrapper-->
+	<div class="wrapper">
+
+		<!-- Header-->
+		<header th:replace="layout :: site-header"></header>
+		<!-- End header-->
+
+		<!-- Navigation-->
+		<div th:replace="layout :: site-navegation"></div>
+
+		<!-- End navigation-->
+		<!-- Main content-->
+		<section class="content">
+
+
+			<div class="container lg animated slideInDown">
+
+
+				<div class="view-header">
+					<div class="header-icon">
+						<i class="pe page-header-icon pe-7s-add-user"></i>
+					</div>
+					<div class="header-title">
+						<h3>Cadastro de Usu&aacute;rio</h3>
+						<small> Por favor, entre com os dados para registro! </small>
+					</div>
+				</div>
+
+				<div class="panel panel-filled">
+					<div class="panel-body">
+						<p></p>
+						<form class="form-group" th:object="${usuarioCadastroForm}"
+							data-toggle="validator" role="form" method="POST"
+							id="cadUsuarioForm" novalidate="novalidate">
+
+							<div class="alert alert-success" th:text="${successMessage}"
+								th:if="${not #strings.isEmpty(successMessage)}"></div>
+
+							<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+								<div th:each="detailedError : ${#fields.detailedErrors()}">
+									<span th:text="${detailedError.message}"></span>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-lg-6"
+									th:classappend="${#fields.hasErrors('nome')} ? has-error">
+									<label class="control-label">Nome:</label> <input type="text"
+										th:field="*{nome}" id="nome" class="form-control" /> <span
+										class="help-block small"></span>
+								</div>
+								<div class="form-group col-lg-6"
+									th:classappend="${#fields.hasErrors('nascimento')} ? has-error">
+									<label>Nascimento:</label> <input type="date"
+										th:field="*{nascimento}" id="nascimento" class="form-control" />
+									<span class="help-block small"></span>
+								</div>
+								<div class="form-group col-lg-6"
+									th:classappend="${#fields.hasErrors('email')} ? has-error">
+									<label>E-mail:</label> <input type="email" th:field="*{email}"
+										id="email" class="form-control"
+										data-error="Por favor, informe um e-mail correto." /> <span
+										class="help-block small"></span>
+								</div>
+								<div class="form-group col-lg-6"
+									th:classappend="${#fields.hasErrors('telefone')} ? has-error">
+									<label for="itelefone" class="control-label">Telefone:</label>
+									 <input class="form-control" type="tel" id="phone" name="phone"
+									onkeypress="mask(this, mphone);"
+									placeholder="(  ) xxxxx - xxxx" onblur="mask(this, mphone);"
+									th:field="*{telefone}"  /> <span
+										class="help-block small"></span>
+								</div>
+								<div class="form-group col-lg-6"
+									th:classappend="${#fields.hasErrors('usuarioTipo')} ? has-error">
+									<label for="usuarioTipo" class="control-label">Tipo de
+										Usu&aacute;rio:</label> <select class="form-control"
+										th:field="*{usuarioTipo}">
+										<option value=""></option>
+										<option th:each="usuarioTipo : ${usuarioTipoLista}"
+											th:value="${usuarioTipo.id}" th:text="${usuarioTipo.nome}"></option>
+									</select> <span class="help-block small"></span>
+								</div>
+								<div class="form-group col-lg-6"
+									th:classappend="${#fields.hasErrors('login')} ? has-error">
+									<label for="login" class="control-label">Login:</label> <input
+										type="text" th:field="*{login}" class="form-control" /> <span
+										class="help-block small"></span>
+								</div>
+								<div class="form-group col-lg-6"
+									th:classappend="${#fields.hasErrors('senha')} ? has-error">
+									<label for="inputPassword" class="control-label">Senha:</label>
+									<input type="password" class="form-control" id="inputPassword"
+										placeholder="Digite sua Senha..." title="Senha"
+										th:field="*{senha}" /><span class="help-block small"></span>
+								</div>
+								<div class="form-group col-lg-6"
+									th:classappend="${#fields.hasErrors('confirmaSenha')} ? has-error">
+									<label for="inputConfirm" class="control-label">Confirme
+										a Senha:</label> <input type="password" class="form-control"
+										id="inputConfirm" placeholder="Confirme sua Senha..."
+										data-match="#inputPassword" title="confirmaSenha"
+										th:field="*{confirmaSenha}"
+										data-match-error="Atenção! As senhas não estão iguais." /> <span
+										class="help-block small"></span>
+								</div>
+							</div>
+							<div>
+								<button class="btn btn-accent" type="submit">Cadastrar</button>
+								<!--  <a class="btn btn-default" href="login.htm">Login</a> -->
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!-- End main content-->
+
+	</div>
+	<!-- End wrapper-->
+
+	<!-- Vendor scripts -->
+	<div th:replace="layout :: script-footer"></div>
+
+</body>
+
+</html>
