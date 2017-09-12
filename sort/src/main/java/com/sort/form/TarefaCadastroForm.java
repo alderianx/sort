@@ -35,7 +35,7 @@ public class TarefaCadastroForm {
 	@NotBlank(message = "*Por favor! insira um [Tipo de Teste]")
 	private String tipo;
 
-	@NotBlank(message = "*Por favor! insira um [Tipo de Erro]")
+	
 	private String erroTipo;
 
 	private String observacaoTarefa;
