@@ -38,6 +38,7 @@ public class UsuarioController extends SortAbstractController {
 		List<Usuario> listaUsuario = usuarioRepository.findAll();
 		modelAndView.addObject("listarUsuarios", listaUsuario);
 		
+		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
 		return modelAndView;
@@ -52,7 +53,7 @@ public class UsuarioController extends SortAbstractController {
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("usuarioCadastroForm", usuarioCadastroForm);
 		
-		
+		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
 		return modelAndView;

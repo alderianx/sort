@@ -68,6 +68,7 @@ public class TarefaController extends SortAbstractController {
 		List<Tarefa> listaTarefa =tarefaService.findAllTarefa();
 		modelAndView.addObject("listarTarefas", listaTarefa);
 		
+		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
 		return modelAndView;

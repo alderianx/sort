@@ -38,11 +38,9 @@
 					</div>
 				</div>
 
-				<div class="row" th:replace="layout :: sort-header"></div>
-
 
 				<div class="row">
-					<div class="col-md-8">
+					<div class="col-md-12">
 						<div class="panel">
 							<div class="panel-body">
 								<div class="table-responsive">
@@ -54,7 +52,7 @@
 												<th>Telefone</th>
 												<th>E-mail</th>
 												<th>Data Nascimento</th>
-												<th>City</th>
+												<th>Permiss&atilde;o</th>
 												<th>Ver</th>
 											</tr>
 										</thead>
@@ -64,9 +62,8 @@
 												<td th:text="${usuario.nome}"></td>
 												<td th:text="${usuario.telefone}"></td>
 												<td th:text="${usuario.email}"></td>
-												<td th:text="${usuario.nascimento}">
-												<div class="sparkline8"></div></td>
-												<td>Vosselaar</td>
+												<td	th:text="${#calendars.format(usuario.nascimento,'dd MMMM yyyy')}"></td>
+												<td th:text="${usuario.usuarioTipo.nome}"></td>
 												<td><a href="#" class="btn btn-default btn-xs">Ver</a></td>
 											</tr>
 
