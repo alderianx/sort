@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,8 +19,6 @@ import com.sort.model.UsuarioTipo;
 import com.sort.repository.UsuarioTipoRepository;
 import com.sort.service.UsuarioService;
 
-
-
 @Controller
 public class UsuarioController extends SortAbstractController {
 
@@ -30,14 +27,14 @@ public class UsuarioController extends SortAbstractController {
 
 	@Autowired
 	private UsuarioTipoRepository usuarioTipoRepository;
-	
+
 	@RequestMapping(value = "/listarUsuario", method = RequestMethod.GET)
 	public ModelAndView listarUsuario() {
 		ModelAndView modelAndView = new ModelAndView("usuario_listar");
-		
+
 		List<Usuario> listaUsuario = usuarioRepository.findAll();
 		modelAndView.addObject("listarUsuarios", listaUsuario);
-		
+
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
@@ -46,13 +43,14 @@ public class UsuarioController extends SortAbstractController {
 
 	@RequestMapping(value = "/cadastrarUsuario", method = RequestMethod.GET)
 	public ModelAndView novoUsuario(UsuarioCadastroForm usuarioCadastroForm) {
+
 		ModelAndView modelAndView = new ModelAndView("usuario_cadastrar");
-		
+
 		List<UsuarioTipo> listaUsuarioTipo = usuarioTipoRepository.findAll();
 		modelAndView.addObject("usuarioTipoLista", listaUsuarioTipo);
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("usuarioCadastroForm", usuarioCadastroForm);
-		
+
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
@@ -66,17 +64,18 @@ public class UsuarioController extends SortAbstractController {
 		Usuario userExists = usuarioService.findUsuarioByLogin(usuarioCadastroForm.getLogin());
 
 		if (userExists != null) {
-			bindingResult.rejectValue("login", "error.user", "J· existe um usu·rio cadastrado com esse login");
+			bindingResult.rejectValue("login", "error.user", "J√° existe um usu√°rio cadastrado com esse login");
 		}
 		if (bindingResult.hasErrors()) {
 			return novoUsuario(usuarioCadastroForm);
 		} else {
+
 			usuarioService.saveUsuario(usuarioCadastroForm);
 			modelAndView.addObject("usuarioCadastroForm", new UsuarioCadastroForm());
-			
+
 		}
 		modelAndView = new ModelAndView("redirect:/cadastrarUsuario");
-		redirectAttributes.addFlashAttribute("successMessage", "Usu·rio cadastrado com sucesso.");
+		redirectAttributes.addFlashAttribute("successMessage", "Usu√°rio cadastrado com sucesso.");
 		return modelAndView;
 	}
 

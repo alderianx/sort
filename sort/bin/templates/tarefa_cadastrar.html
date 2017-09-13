@@ -118,8 +118,8 @@
 											th:classappend="${#fields.hasErrors('erroTipo')} ? has-error">
 											<label for="erroTipo" class="control-label">Tipo de
 												Erro:</label><select class="form-control " th:field="*{erroTipo}">
-												<option value=""></option>
-												<option th:each="erroTipo : ${erroTipoLista}"
+												
+												<option th:each="erroTipo : ${erroTipoLista}" 
 													th:value="${erroTipo.nome}" th:text="${erroTipo.nome}"></option>
 											</select> <span class="help-block small"></span>
 										</div>

@@ -10,11 +10,11 @@ public class UsuarioCadastroForm {
 	@NotBlank(message = "*Por favor! insira um [Nome]")
 	private String nome;
 
-	@Email(message = "*Por favor! insira um [e-mail] válido")
+	@Email(message = "*Por favor! insira um [e-mail] vÃ¡lido")
 	@NotBlank(message = "*Por favor! insira um [E-mail]")
 	private String email;
 
-	@NotBlank(message = "*Por favor! insira um [Telefone] válido")
+	@NotBlank(message = "*Por favor! insira um [Telefone] vÃ¡lido")
 	private String telefone;
 
 	@NotBlank(message = "*Por favor! insira um [Login]")
@@ -23,13 +23,13 @@ public class UsuarioCadastroForm {
 	@NotBlank(message = "*Por favor! insira uma [Senha]")
 	private String senha;
 
-	@NotBlank(message = "*Por favor! insira uma [Confirmação de Senha]")
+	@NotBlank(message = "*Por favor! insira uma [ConfirmaÃ§Ã£o de Senha]")
 	private String confirmaSenha;
 
-	@NotBlank(message = "*Por favor! insira uma data de [Nascimento] válida")
+	@NotBlank(message = "*Por favor! insira uma data de [Nascimento] vÃ¡lida")
 	private String nascimento;
 
-	@NotBlank(message = "*Por favor! insira um [Tipo de usuário]")
+	@NotBlank(message = "*Por favor! insira um [Tipo de usuÃ¡rio]")
 	private String usuarioTipo;
 
 	public UsuarioCadastroForm() {

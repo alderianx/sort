@@ -9,10 +9,10 @@ import org.hibernate.validator.constraints.NotBlank;
  */
 public class TarefaCadastroForm {
 
-	@NotBlank(message = "*Por favor! insira o [Nº da Tarefa]")
+	@NotBlank(message = "*Por favor! insira o [NÂº da Tarefa]")
 	private String numeroTarefa;
 
-	@NotBlank(message = "*Por favor! insira o [Nº de Erros Encontrados]")
+	@NotBlank(message = "*Por favor! insira o [NÂº de Erros Encontrados]")
 	private String qtdErros;
 
 	private boolean erroCaminhoFeliz;
@@ -24,7 +24,7 @@ public class TarefaCadastroForm {
 
 	private String fimTeste;
 
-	@NotBlank(message = "*Por favor! insira um [Módulo]")
+	@NotBlank(message = "*Por favor! insira um [MÃ³dulo]")
 	private String modulo;
 
 	private String usuario;
@@ -35,7 +35,7 @@ public class TarefaCadastroForm {
 	@NotBlank(message = "*Por favor! insira um [Tipo de Teste]")
 	private String tipo;
 
-	
+
 	private String erroTipo;
 
 	private String observacaoTarefa;
