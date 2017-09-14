@@ -83,8 +83,7 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 
 	@Override
 	public List<Tarefa> findAllTarefa() {
-	return	tarefaRepository.findAll();
-		
+		return	tarefaRepository.findAll();		
 	}
 
 	

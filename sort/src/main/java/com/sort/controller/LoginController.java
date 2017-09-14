@@ -20,9 +20,7 @@ public class LoginController extends SortAbstractController {
 	public ModelAndView home() {
 
 		ModelAndView modelAndView = new ModelAndView("index");
-		modelAndView = getHome();
-
-		
+		modelAndView = getHome();		
 		return modelAndView;
 	}
 

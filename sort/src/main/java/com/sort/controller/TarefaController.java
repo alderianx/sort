@@ -3,13 +3,11 @@ package com.sort.controller;
 /**@author Alderian**/
 
 import java.util.Calendar;
-
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +22,6 @@ import com.sort.model.Modulo;
 import com.sort.model.Tarefa;
 import com.sort.model.TarefaStatus;
 import com.sort.model.TarefaTipo;
-
 import com.sort.repository.ErroTipoRepository;
 import com.sort.repository.FluxoRepository;
 import com.sort.repository.ModuloRepository;
@@ -33,14 +30,12 @@ import com.sort.repository.TarefaRepository;
 import com.sort.repository.TarefaTipoRepository;
 import com.sort.service.TarefaService;
 
-
-
 @Controller
 public class TarefaController extends SortAbstractController {
 
 	@Autowired
 	private TarefaService tarefaService;
-	
+
 	@Autowired
 	private TarefaRepository tarefaRepository;
 
@@ -58,16 +53,29 @@ public class TarefaController extends SortAbstractController {
 
 	@Autowired
 	private ErroTipoRepository erroTipoRepository;
-	
+
 	@RequestMapping(value = "/listarTarefa", method = RequestMethod.GET)
 	public ModelAndView listarTarefas() {
 		ModelAndView modelAndView = new ModelAndView("index");
 		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
 		modelAndView.addObject("listarTarefasMes", listaTarefaMes);
-		
-		List<Tarefa> listaTarefa =tarefaService.findAllTarefa();
+
+		List<Tarefa> listaTarefa = tarefaService.findAllTarefa();
 		modelAndView.addObject("listarTarefas", listaTarefa);
-		
+
+		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
+		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
+				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/listarTarefaUsuario", method = RequestMethod.GET)
+	public ModelAndView listarTarefasUsuario() {
+		ModelAndView modelAndView = new ModelAndView("tarefa_listar");
+
+		List<Tarefa> listaTarefaUsuario = tarefaRepository.tarefaByUsuario(getUsuarioLogado().getId());
+		modelAndView.addObject("listarTarefasUsuario", listaTarefaUsuario);
+
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
@@ -117,7 +125,7 @@ public class TarefaController extends SortAbstractController {
 		} else {
 			tarefaService.saveTarefa(tarefaCadastroForm);
 			modelAndView.addObject("tarefaCadastroForm", new TarefaCadastroForm());
-			
+
 		}
 		modelAndView = new ModelAndView("redirect:/cadastrarTarefa");
 		redirectAttributes.addFlashAttribute("successMessage", "Tarefa cadastrada com sucesso.");

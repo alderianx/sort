@@ -101,7 +101,7 @@
 						</a>
 							<ul id="monitoring" class="nav nav-second collapse">
 								<li><a th:href="@{/cadastrarTarefa}"> Cadastrar Teste</a></li>
-								<li><a href="#">Listar Testes</a></li>
+								<li><a th:href="@{/listarTarefaUsuario}">Listar Testes</a></li>
 								<li role="separator" class="divider"></li>
 								<li class="dropdown-header">Rendimento</li>
 								<li><a href="#">Hist&oacute;rico de Tarefas</a></li>
@@ -134,7 +134,7 @@
 							</ul></li>
 
 						<!-- 	<li class="nav-category">App Pages</li> -->
-						<li><a href="#extras" data-toggle="collapse"
+					<!-- 	<li><a href="#extras" data-toggle="collapse"
 							aria-expanded="false"> Basic <span class="sub-nav-icon">
 									<i class="stroke-arrow"></i>
 							</span>
@@ -146,7 +146,7 @@
 								<li><a href="support.htm">Support</a></li>
 								<li><a href="nestableList.htm">List</a></li>
 								<li><a href="timeline.htm">Timeline</a></li>
-							</ul></li>
+							</ul></li> -->
 						<li th:if="${userTipo} == 1 and ${userTipo} != null"><a
 							href="#common" data-toggle="collapse" aria-expanded="false">
 								Ranking <span class="sub-nav-icon"> <i
