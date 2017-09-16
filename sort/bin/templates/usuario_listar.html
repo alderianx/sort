@@ -11,10 +11,75 @@
 		<!-- End header-->
 
 		<!-- Navigation-->
-		<div th:replace="layout :: site-navegation"></div>
+		<div>
+			<aside class="navigation">
+				<nav>
+					<ul class="nav luna-nav">
+						<!-- <li class="nav-category">Main</li> -->
+						<li><a th:href="@{/listarTarefa}">In&iacute;cio</a></li>
 
+						<li><a th:href="@{#monitoring}" data-toggle="collapse"
+							aria-expanded="false"> Tarefa<span class="sub-nav-icon">
+									<i class="stroke-arrow"></i>
+							</span>
+						</a>
+							<ul id="monitoring" class="nav nav-second collapse">
+								<li><a th:href="@{/cadastrarTarefa}"> Cadastrar Teste</a></li>
+								<li><a th:href="@{/listarTarefaUsuario}">Listar Testes</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">Rendimento</li>
+								<li><a href="#">Hist&oacute;rico de Tarefas</a></li>
+								<li><a href="activity.htm"> Activity</a></li>
+							</ul></li>
+
+						<li class="active"
+							th:if="${userTipo} == 1 and ${userTipo} != null"><a
+							th:href="@{#uielements}" data-toggle="collapse"
+							aria-expanded="false"> Usu&aacute;rio<span
+								class="sub-nav-icon"> <i class="stroke-arrow"></i>
+							</span>
+						</a>
+							<ul id="uielements" class="nav nav-second collapse">
+								<li><a th:href="@{/cadastrarUsuario}">Cadastrar
+										Usu&aacute;rio</a></li>
+								<li><a th:href="@{/listarUsuario}">Listar
+										Usu&aacute;rios</a></li>
+
+							</ul></li>
+
+
+						<li th:if="${userTipo} == 1 and ${userTipo} != null"><a
+							href="#charts" data-toggle="collapse" aria-expanded="false">Gr&aacute;ficos<span
+								class="sub-nav-icon"> <i class="stroke-arrow"></i>
+							</span>
+						</a>
+							<ul id="charts" class="nav nav-second collapse">
+								<li><a href="flotCharts.htm">Flot charts</a></li>
+								<li><a href="chartJs.htm">ChartJS</a></li>
+								<li><a href="sparkline.htm">Sparkline</a></li>
+								<li><a href="datamaps.htm">Datamaps</a></li>
+							</ul></li>
+
+
+						<li th:if="${userTipo} == 1 and ${userTipo} != null"><a
+							href="#common" data-toggle="collapse" aria-expanded="false">
+								Ranking <span class="sub-nav-icon"> <i
+									class="stroke-arrow"></i>
+							</span>
+						</a>
+							<ul id="common" class="nav nav-second collapse">
+								<li><a href="login.htm">Login</a></li>
+								<li><a href="register.htm">Register</a></li>
+
+								<li><a href="error.htm">Error page</a></li>
+							</ul></li>
+
+
+					</ul>
+				</nav>
+			</aside>
+		</div>
 		<!-- End navigation-->
-
 
 		<!-- Main content-->
 		<section class="content">
@@ -62,7 +127,8 @@
 												<td th:text="${usuario.nome}"></td>
 												<td th:text="${usuario.telefone}"></td>
 												<td th:text="${usuario.email}"></td>
-												<td	th:text="${#calendars.format(usuario.nascimento,'dd MMMM yyyy')}"></td>
+												<td
+													th:text="${#calendars.format(usuario.nascimento,'dd MMMM yyyy')}"></td>
 												<td th:text="${usuario.usuarioTipo.nome}"></td>
 												<td><a href="#" class="btn btn-default btn-xs">Ver</a></td>
 											</tr>
