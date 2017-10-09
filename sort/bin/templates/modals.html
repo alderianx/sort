@@ -78,74 +78,40 @@
 		<!-- End navigation-->
 
 
-		<!-- Main content-->
-		<section class="content">
-			<div class="container-fluid">
+    <!-- Main content-->
+    <section class="content">
+        <div class="container-fluid">
 
-				<div class="row" th:replace="layout :: sort-header"></div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="view-header">
+                        
+                        <div class="header-icon">
+                            <i class="pe page-header-icon pe-7s-speaker"></i>
+                        </div>
+                        <div class="header-title">
+                            <h3>Modals</h3>
+                            <small>
+                                Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.
+                            </small>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+
+            <div class="row">
 
 
-				<div class="row">
-					<div class="col-md-12">
-						<div class="panel">
-							<div class="panel-body">
-								<span
-									th:text="${#calendars.format(#dates.createNow(),' MMMM yyyy')}"></span>
-								<div class="table-responsive">
+                <div class="m-t-md">
 
-									<table class="table table-hover table-striped">
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"> Launch demo modal</button>
 
-										<thead>
-											<tr>
-												<th>#</th>
-												<th>N&ordm; da tarefa</th>
-												<th>Data Cria&ccedil;&atilde;o</th>
-												<th>Testador</th>
-												<th>N&ordm; de Erros</th>
-												<th>Erros no Caminho Feliz</th>
-												<!-- <th>Tempo Gasto</th> -->
-												<th>Fluxo</th>
-												<th>M&oacute;dulo</th>
-												<th>Tipo de Erro</th>
-												<th>Status</th>
-
-												<th>Ver</th>
-											</tr>
-										</thead>
-										<tbody>
-
-											<tr th:each="tarefa,row : ${listarTarefasMes}">
-												<td th:text="${row.count}"></td>
-												<td th:text="${tarefa.numeroTarefa}"></td>
-												<td	th:text="${#calendars.format(tarefa.fimTeste,'dd MMMM yyyy')}"></td>
-												<td th:text="${tarefa.usuario.nome}"></td>
-												<td th:text="${tarefa.qtdErros}"></td>
-
-												<td th:switch="${tarefa.erroCaminhoFeliz}">
-													<b th:case="true">Sim</b>
-													<b th:case="FALSE">N&atilde;o</b>
-												</td>
-
-												<td th:text="${tarefa.fluxo.nome}"></td>
-												<td th:text="${tarefa.modulo.nome}"></td>
-												<td th:text="${tarefa.erroTipo.nome}"></td>
-												<td th:text="${tarefa.status.nome}"></td>
-
-												<td th:switch="${tarefa.status.id}">
-												
-												<a th:case="1" href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal1">Ver</a>
-                                <a th:case="2" href="#" class="btn btn-success btn-xs" data-toggle="modal" data-target="#myModal1">Ver</a>                                	
-								<a th:case="3" href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal1">Ver</a>
-							
-									<div class="m-t-md">                                
-								
-							
-								
-                                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header text-center">
-                                                <h4 class="modal-title" >Tarefa <b th:text="${tarefa.numeroTarefa}"/></h4>
+                                                <h4 class="modal-title">Modal title</h4>
                                                 <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
                                             </div>
                                             <div class="modal-body">
@@ -154,7 +120,7 @@
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <small class="stat-label">Today</small>
-                                                        <h4 class="m-t-xs">111,20 <i class="fa fa-level-up text-accent"></i></h4>
+                                                        <h4 class="m-t-xs">170,20 <i class="fa fa-level-up text-accent"></i></h4>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <small class="stat-label">Last month %</small>
@@ -166,50 +132,31 @@
                                                     </div>
                                                 </div>
                                                 <div class="progress m-t-xs full progress-small">
-                                                    <div style="width: 95%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="65" role="progressbar" class=" progress-bar progress-bar-warning">
+                                                    <div style="width: 65%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="65" role="progressbar" class=" progress-bar progress-bar-warning">
                                                         <span class="sr-only">65% Complete (success)</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                 <button type="button" class="btn btn-accent">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-									
-                            </div>			
-												
-												
-												</td>
-												
-												
 
-											</tr>
+                            </div>
+              
 
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
 
-	
+            </div>
 
-				</div>
-				
+        </div>
+    </section>
+    <!-- End main content-->
 
-			</div>
-		</section>
-		<!-- End main content-->
-		
-		
-		
-	</div>
-
-	<!-- End wrapper-->
+</div>
+<!-- End wrapper-->
 
 	<div th:replace="layout :: script-footer"></div>
 <script src="scripts\sparklinecharts.js"></script> 
