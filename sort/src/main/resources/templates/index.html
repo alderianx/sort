@@ -10,7 +10,7 @@
 		<header th:replace="layout :: site-header"></header>
 		<!-- End header-->
 
-	<!-- Navigation-->
+		<!-- Navigation-->
 		<div>
 			<aside class="navigation">
 				<nav>
@@ -18,9 +18,9 @@
 						<!-- <li class="nav-category">Main</li> -->
 						<li class="active"><a th:href="@{/listarTarefa}">In&iacute;cio</a></li>
 
-						<li ><a th:href="@{#monitoring}"
-							data-toggle="collapse" aria-expanded="false"> Tarefa<span
-								class="sub-nav-icon"> <i class="stroke-arrow"></i>
+						<li><a th:href="@{#monitoring}" data-toggle="collapse"
+							aria-expanded="false"> Tarefa<span class="sub-nav-icon">
+									<i class="stroke-arrow"></i>
 							</span>
 						</a>
 							<ul id="monitoring" class="nav nav-second collapse">
@@ -29,7 +29,7 @@
 								<li role="separator" class="divider"></li>
 								<li class="dropdown-header">Rendimento</li>
 								<li><a href="#">Hist&oacute;rico de Tarefas</a></li>
-							
+
 							</ul></li>
 
 						<li th:if="${userTipo} == 1 and ${userTipo} != null"><a
@@ -55,7 +55,7 @@
 							<ul id="charts" class="nav nav-second collapse">
 								<li><a th:href="@{/desempenhoTarefa}">Desempenho</a></li>
 								<li><a href="sparkline.htm">Sparkline</a></li>
-								
+
 							</ul></li>
 
 
@@ -67,7 +67,7 @@
 						</a>
 							<ul id="common" class="nav nav-second collapse">
 								<li><a th:href="@{/listarTarefaModal}">modals</a></li>
-															
+
 							</ul></li>
 
 
@@ -106,7 +106,7 @@
 												<!-- <th>Tempo Gasto</th> -->
 												<th>Fluxo</th>
 												<th>M&oacute;dulo</th>
-												<th>Tipo de Erro</th>
+												<!-- <th>Tipo de Erro</th> -->
 												<th>Status</th>
 												<th>Ver</th>
 											</tr>
@@ -116,84 +116,26 @@
 											<tr th:each="tarefa,row : ${listarTarefasMes}">
 												<td th:text="${row.count}"></td>
 												<td th:text="${tarefa.numeroTarefa}"></td>
-												<td	th:text="${#calendars.format(tarefa.fimTeste,'dd MMMM yyyy')}"></td>
+												<td
+													th:text="${#calendars.format(tarefa.fimTeste,'dd MMMM yyyy')}"></td>
 												<td th:text="${tarefa.usuario.nome}"></td>
 												<td th:text="${tarefa.qtdErros}"></td>
 
-												<td th:switch="${tarefa.erroCaminhoFeliz}">
-													<b th:case="true">Sim</b>
-													<b th:case="FALSE">N&atilde;o</b>
-												</td>
+												<td th:switch="${tarefa.erroCaminhoFeliz}"><b
+													th:case="true">Sim</b> <b th:case="FALSE">N&atilde;o</b></td>
 
 												<td th:text="${tarefa.fluxo.nome}"></td>
 												<td th:text="${tarefa.modulo.nome}"></td>
-												<td th:text="${tarefa.erroTipo.nome}"></td>
+												<!-- <td th:text="${tarefa.erroTipo.nome}"></td> -->
 												<td th:text="${tarefa.status.nome}"></td>
 
 												<td th:switch="${tarefa.status.id}">
-												
-								<a th:case="1" href="#" class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>
-                                <a th:case="2" href="#" class="btn btn-success btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>                                	
-								<a th:case="3" href="#" class="btn btn-warning btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>
-							
-									<div class="m-t-md">                                
-								
-							
-								
-                                <div class="modal fade" th:id="'myModal' + ${row.count}"  tabindex="-1" role="dialog" aria-hidden="true">
-                                    
-                                     <div th:switch="${tarefa.status.id}" >
-                                    
-                                    <div th:case="1" class="modal-dialog panel panel-filled panel-c-danger">
-                                    <!-- <div th:case="2" class="modal-dialog panel panel-filled panel-c-success">
-                                    <div th:case="2" class="modal-dialog panel panel-filled panel-c-warning"> -->
-                                      
-                                        <div class="modal-content">
-                                            <div class="modal-header text-center">
-                                                <h4 class="modal-title" th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-                                                <small></small>
-                                            </div>
-                                            <div class="modal-body">
-                                               <p class="m-t-none">Nome:</p>
-                                                <h4 th:text="${tarefa.usuario.nome}"></h4>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <small class="stat-label">Today</small>
-                                                        <h4 class="m-t-xs"> <i class="fa fa-level-up text-accent"></i></h4>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <small class="stat-label">Last month %</small>
-                                                        <h4 class="m-t-xs">%20,20 <i class="fa fa-level-down c-white"></i></h4>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <small class="stat-label">Last year</small>
-                                                        <h4 class="m-t-xs">246,40 <i class="fa fa-level-up text-accent"></i></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="progress m-t-xs full progress-small">
-                                                    <div style="width: 95%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="65" role="progressbar" class=" progress-bar progress-bar-warning">
-                                                        <span class="sr-only">65% Complete (success)</span>
-                                                    </div>
-                                                </div> 
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                               <!--  <button type="button" class="btn btn-accent">Save changes</button> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <!-- </div>
-                                    </div> -->
-                                </div>
-                                
-									
-                            </div>			
-												
-												
+												<a th:case="1" href="#" class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>
+												<a th:case="2" href="#" class="btn btn-success btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a> 
+												<a th:case="3" href="#" class="btn btn-warning btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>
+
+												<div class="m-t-md" th:replace="modals :: modal-tarefa"	></div>
 												</td>
-												
-												
 
 											</tr>
 
@@ -204,23 +146,18 @@
 						</div>
 					</div>
 
-	
-
 				</div>
-				
 
 			</div>
 		</section>
 		<!-- End main content-->
-		
-		
-		
+
 	</div>
 
 	<!-- End wrapper-->
 
 	<div th:replace="layout :: script-footer"></div>
-<script src="scripts\sparklinecharts.js"></script> 
+	<script src="scripts\sparklinecharts.js"></script>
 </body>
 
 </html>

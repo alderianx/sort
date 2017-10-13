@@ -29,6 +29,18 @@ public class Tarefa implements Serializable {
 
 	@Column(name = "tar_qtd_erros")
 	private int qtdErros;
+	
+	@Column(name = "tar_sev_1")
+	private int severidade1;
+	
+	@Column(name = "tar_sev_2")
+	private int severidade2;
+	
+	@Column(name = "tar_sev_3")
+	private int severidade3;
+	
+	@Column(name = "tar_sev_4")
+	private int severidade4;
 
 	@Column(name = "tar_erroCaminhoFeliz")
 	private boolean erroCaminhoFeliz;
