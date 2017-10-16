@@ -29,25 +29,25 @@ public class Tarefa implements Serializable {
 
 	@Column(name = "tar_qtd_erros")
 	private int qtdErros;
-	
+
 	@Column(name = "tar_sev_1")
-	private int severidade1;
-	
+	private int severidade1 = 0;
+
 	@Column(name = "tar_sev_2")
-	private int severidade2;
-	
+	private int severidade2 = 0;
+
 	@Column(name = "tar_sev_3")
-	private int severidade3;
-	
+	private int severidade3 = 0;
+
 	@Column(name = "tar_sev_4")
-	private int severidade4;
+	private int severidade4 = 0;
 
 	@Column(name = "tar_erroCaminhoFeliz")
 	private boolean erroCaminhoFeliz;
 
 	@Column(name = "tar_num_tarefa")
 	private Long numeroTarefa;
-	
+
 	@Column(name = "tar_num_tarefa_pai")
 	private Long numeroTarefaPai;
 
@@ -232,7 +232,45 @@ public class Tarefa implements Serializable {
 	public void setDeadLine(Date deadLine) {
 		this.deadLine = deadLine;
 	}
-	
-	
+
+	public Long getNumeroTarefaPai() {
+		return numeroTarefaPai;
+	}
+
+	public void setNumeroTarefaPai(Long numeroTarefaPai) {
+		this.numeroTarefaPai = numeroTarefaPai;
+	}
+
+	public int getSeveridade1() {
+		return severidade1;
+	}
+
+	public void setSeveridade1(int severidade1) {
+		this.severidade1 = severidade1;
+	}
+
+	public int getSeveridade2() {
+		return severidade2;
+	}
+
+	public void setSeveridade2(int severidade2) {
+		this.severidade2 = severidade2;
+	}
+
+	public int getSeveridade3() {
+		return severidade3;
+	}
+
+	public void setSeveridade3(int severidade3) {
+		this.severidade3 = severidade3;
+	}
+
+	public int getSeveridade4() {
+		return severidade4;
+	}
+
+	public void setSeveridade4(int severidade4) {
+		this.severidade4 = severidade4;
+	}
 
 }

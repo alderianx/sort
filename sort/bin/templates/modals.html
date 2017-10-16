@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: css-head"></head>	
+<head th:replace="layout :: css-head"></head>
 
-							<!-- 			<thead>
+<!-- 			<thead>
 											<tr>
 												<th>#</th>
 												<th>N&ordm; da tarefa</th>
@@ -38,157 +38,202 @@
 
 												<td th:switch="${tarefa.status.id}">
 											
-									 -->	
+									 -->
 
-			
-				<div th:fragment="modal-tarefa" class="modal fade" th:id="'myModal' + ${row.count}" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Modal de tarefas da pagina de index -->
+<div th:fragment="modal-tarefa" class="modal fade"	th:id="'myModal' + ${row.count}" tabindex="-1" role="dialog" aria-hidden="true">
 
-															<div th:switch="${tarefa.status.id}">
-
-																<div  th:case='1' class='modal-dialog panel panel-filled panel-c-danger' >
-																	<div class="modal-content">
-																		<div class="modal-header text-center">
-																			<h4 class="modal-title"
-																				th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-																			<small></small>
-																		</div>
-																		<div class="modal-body">
-																			<!-- <p class="m-t-none">Nome:</p> -->
-																			<h4 th:text="${tarefa.usuario.nome}"></h4>
-																			<div class="row">
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste</small>
-																					<h4 class="m-t-xs">
-																						<i class="fa fa-level-up text-accent"></i>
-																					</h4>
-																				</div>
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste mês %</small>
-																					<h4 class="m-t-xs">
-																						%20,20 <i class="fa fa-level-down c-white"></i>
-																					</h4>
-																				</div>
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste ano</small>
-																					<h4 class="m-t-xs">
-																						246,40 <i class="fa fa-level-up text-accent"></i>
-																					</h4>
-																				</div>
-																			</div>
-																			<div class="progress m-t-xs full progress-small">
-																				<div style="width: 95%" aria-valuemax="100"
-																					aria-valuemin="0" aria-valuenow="65"
-																					role="progressbar"
-																					class=" progress-bar progress-bar-warning">
-																					<span class="sr-only">65% Completo (sucesso)</span>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="modal-footer">
-																			<button type="button" class="btn btn-default"
-																				data-dismiss="modal">Fechar</button>
-																			<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
-																		</div>
-																	</div>
-																</div>
-
-																 <div th:case="2" class="modal-dialog panel panel-filled panel-c-success">
-																	<div class="modal-content">
-																		<div class="modal-header text-center">
-																			<h4 class="modal-title"
-																				th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-																			<small></small>
-																		</div>
-																		<div class="modal-body">
-																			<p class="m-t-none">Nome:</p>
-																			<h4 th:text="${tarefa.usuario.nome}"></h4>
-																			<div class="row">
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste</small>
-																					<h4 class="m-t-xs">
-																						<i class="fa fa-level-up text-accent"></i>
-																					</h4>
-																				</div>
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste mês %</small>
-																					<h4 class="m-t-xs">
-																						%20,20 <i class="fa fa-level-down c-white"></i>
-																					</h4>
-																				</div>
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste ano</small>
-																					<h4 class="m-t-xs">
-																						246,40 <i class="fa fa-level-up text-accent"></i>
-																					</h4>
-																				</div>
-																			</div>
-																			<div class="progress m-t-xs full progress-small">
-																				<div style="width: 95%" aria-valuemax="100"
-																					aria-valuemin="0" aria-valuenow="65"
-																					role="progressbar"
-																					class=" progress-bar progress-bar-warning">
-																					<span class="sr-only">65% Completo (sucesso)</span>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="modal-footer">
-																			<button type="button" class="btn btn-default"
-																				data-dismiss="modal">Fechar</button>
-																			<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
-																		</div>
-																	</div>
-																</div>
-
-																<div th:case="3" class="modal-dialog panel panel-filled panel-c-warning">
-
-																	<div class="modal-content">
-																		<div class="modal-header text-center">
-																			<h4 class="modal-title"
-																				th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-																			<small></small>
-																		</div>
-																		<div class="modal-body">
-																			<p class="m-t-none">Nome:</p>
-																			<h4 th:text="${tarefa.usuario.nome}"></h4>
-																			<div class="row">
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste</small>
-																					<h4 class="m-t-xs">
-																						<i class="fa fa-level-up text-accent"></i>
-																					</h4>
-																				</div>
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste mês %</small>
-																					<h4 class="m-t-xs">
-																						%20,20 <i class="fa fa-level-down c-white"></i>
-																					</h4>
-																				</div>
-																				<div class="col-md-4">
-																					<small class="stat-label">Teste ano</small>
-																					<h4 class="m-t-xs">
-																						246,40 <i class="fa fa-level-up text-accent"></i>
-																					</h4>
-																				</div>
-																			</div>
-																			<div class="progress m-t-xs full progress-small">
-																				<div style="width: 95%" aria-valuemax="100"
-																					aria-valuemin="0" aria-valuenow="65"
-																					role="progressbar"
-																					class=" progress-bar progress-bar-warning">
-																					<span class="sr-only">65% Completo (sucesso)</span>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="modal-footer">
-																			<button type="button" class="btn btn-default"
-																				data-dismiss="modal">Fechar</button>
-																		<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
-																		</div>
-																	</div>
-																</div>
- 
-
-															</div>
-														</div>
+	<div th:switch="${tarefa.status.id}">
+		<div th:case='1' class='modal-dialog panel panel-filled panel-c-danger'>
+			<div class="modal-content">
+				<div class="modal-header text-center" >
+					<h4 class="modal-title"
+						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
+					<small>Totais de erros encontrados na tarefa</small>
+				</div>
 														
+					<div class="modal-body">
+					
+					
+					<div class="row">
+						
+						<div class="col-md-6">
+							<p class="m-t-none">Nome do testador:</p>
+							<h4 th:text="${tarefa.usuario.nome}"></h4>							
+						</div>
+						
+						<div class="col-md-6">
+							<p class="m-t-none">Data do teste:</p>
+							<h4 class="m-t-xs" th:text="${#calendars.format(tarefa.fimTeste,'dd/MM/yyyy')}"></h4>
+						</div>
+						
+						<!-- <div class="col-md-4">
+							<p class="m-t-none">Total de erros:</p>
+							<h4 class="m-t-xs" th:text="${tarefa.qtdErros}"></h4>				
+						</div> -->
+						
+						<div class="col-md-6">
+							<p class="m-t-none">Erro no caminho feliz:</p>
+							<h4 class="m-t-xs" th:switch="${tarefa.erroCaminhoFeliz}">
+							<b	th:case="true">Sim</b> <b th:case="false">N&atilde;o</b>
+							
+							</h4>		
+						</div>
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Fluxo:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.fluxo.nome}"></h4>
+						</div>
+					
+						<div class="col-md-6">
+						<p class="m-t-none">M&oacute;dulo:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.modulo.nome}"></h4>
+						</div>
+							
+						<!-- 	
+						<div class="col-md-4">
+						<p class="m-t-none">Tempo gasto:</p>
+						<h4 class="m-t-xs" th:text="${}"></h4>
+						</div> -->
+						
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Status:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.status.nome}"></h4>
+						</div>	
+						
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros visuais:</p>
+						<h4 class="m-t-xs" th:text="${0}"></h4>
+						</div>
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros de navega&ccedil;&atilde;o:</p>
+						<h4 class="m-t-xs" th:text="${0}"></h4>
+						</div>	
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros de neg&oacute;cio:</p>
+						<h4 class="m-t-xs" th:text="${0}"></h4>
+						</div>	
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Comportamento inesperado:</p>
+						<h4 class="m-t-xs" th:text="${0}"></h4>
+						</div>	
+							
+							
+						
+					</div>
+					
+				</div>					
+						<div class="text-center" ><p class="text-center">Total de <b th:text="${{tarefa.qtdErros}}"></b> erros encontrados na tarefa</p></div>
+				<div class="modal-footer">
+			
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
+				</div>
+			</div>
+		</div>
+
+		<div th:case="2" class="modal-dialog panel panel-filled panel-c-success">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h4 class="modal-title"
+						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
+					<small></small>
+				</div>
+				<div class="modal-body">
+					<p class="m-t-none">Nome:</p>
+					<h4 th:text="${tarefa.usuario.nome}"></h4>
+					<div class="row">
+						<div class="col-md-4">
+							<small class="stat-label">Teste</small>
+							<h4 class="m-t-xs">
+								<i class="fa fa-level-up text-accent"></i>
+							</h4>
+						</div>
+						<div class="col-md-4">
+							<small class="stat-label">Teste mês %</small>
+							<h4 class="m-t-xs">
+								%20,20 <i class="fa fa-level-down c-white"></i>
+							</h4>
+						</div>
+						<div class="col-md-4">
+							<small class="stat-label">Teste ano</small>
+							<h4 class="m-t-xs">
+								246,40 <i class="fa fa-level-up text-accent"></i>
+							</h4>
+						</div>
+					</div>
+					<div class="progress m-t-xs full progress-small">
+						<div style="width: 95%" aria-valuemax="100" aria-valuemin="0"
+							aria-valuenow="65" role="progressbar"
+							class=" progress-bar progress-bar-warning">
+							<span class="sr-only">65% Completo (sucesso)</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
+				</div>
+			</div>
+		</div>
+
+		<div th:case="3" class="modal-dialog panel panel-filled panel-c-warning">
+
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h4 class="modal-title"
+						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
+					<small></small>
+				</div>
+				<div class="modal-body">
+					<p class="m-t-none">Nome:</p>
+					<h4 th:text="${tarefa.usuario.nome}"></h4>
+					<div class="row">
+						<div class="col-md-4">
+							<small class="stat-label">Teste</small>
+							<h4 class="m-t-xs">
+								<i class="fa fa-level-up text-accent"></i>
+							</h4>
+						</div>
+						<div class="col-md-4">
+							<small class="stat-label">Teste mês %</small>
+							<h4 class="m-t-xs">
+								%20,20 <i class="fa fa-level-down c-white"></i>
+							</h4>
+						</div>
+						<div class="col-md-4">
+							<small class="stat-label">Teste ano</small>
+							<h4 class="m-t-xs">
+								246,40 <i class="fa fa-level-up text-accent"></i>
+							</h4>
+						</div>
+					</div>
+					<div class="progress m-t-xs full progress-small">
+						<div style="width: 95%" aria-valuemax="100" aria-valuemin="0"
+							aria-valuenow="65" role="progressbar"
+							class=" progress-bar progress-bar-warning">
+							<span class="sr-only">65% Completo (sucesso)</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+<!-- Fim modal de tarefas da pagina de index -->
+
+
+
+
 </html>

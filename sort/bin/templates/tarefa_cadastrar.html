@@ -151,10 +151,9 @@
 									<div class="row">
 										<div class="form-group col-lg-6"
 											th:classappend="${#fields.hasErrors('numeroTarefa')} ? has-error">
-											<label>N&ordm; da Tarefa:</label> <input
-												class="form-control " min="0" max="9999999" type="number"
-												th:field="*{numeroTarefa}" /> <span
-												class="help-block small"></span>
+											<label>N&ordm; da Tarefa:</label>
+											 <input	class="form-control " min="0" max="9999999" type="number" th:field="*{numeroTarefa}" />
+											  <span	class="help-block small"></span>
 										</div>
 
 										<div class="form-group col-md-4"
@@ -170,15 +169,40 @@
 									</div>
 
 									<div class="row">
-										<div class="form-group col-lg-6"
-											th:classappend="${#fields.hasErrors('qtdErros')} ? has-error">
-											<label for="qtdErros" class="control-label">N&ordm;
-												de Erros Encontrados:</label><input class="form-control " min="0"
-												max="9999999" type="number" th:field="*{qtdErros}" /> <span
+										<div class="form-group col-lg-3"
+											th:classappend="${#fields.hasErrors('severidade4')} ? has-error">
+											<label for="severidade4" class="control-label">N&ordm;
+												de Erros Visuais Encontrados:</label>
+												<input class="form-control " min="0" max="9999999" type="text" th:field="*{severidade4}" placeholder="0" value="0"/>
+												 
+												 <span class="help-block small"></span>
+										</div>
+										
+										<div class="form-group col-lg-3"
+											th:classappend="${#fields.hasErrors('severidade3')} ? has-error">
+											<label for="severidade3" class="control-label">N&ordm;
+												de Erros de Navega&ccedil;&atilde;o Encontrados:</label><input class="form-control " min="0"
+												max="9999999" type="number" th:field="*{severidade3}" placeholder="0"  value="0"/> <span
 												class="help-block small"></span>
 										</div>
 
-										<div class="form-group col-lg-6"
+										<div class="form-group col-lg-3"
+											th:classappend="${#fields.hasErrors('severidade2')} ? has-error">
+											<label for="severidade2" class="control-label">N&ordm;
+												de Erros de Neg&oacute;cio Encontrados:</label><input class="form-control " min="0"
+												max="9999999" type="number" th:field="*{severidade2}" placeholder="0" value="0" /> <span
+												class="help-block small"></span>
+										</div>
+										
+										<div class="form-group col-lg-3"
+											th:classappend="${#fields.hasErrors('severidade1')} ? has-error">
+											<label for="severidade1" class="control-label">N&ordm;
+												de Erros de C.I Encontrados:</label>
+												<input class="form-control " min="0" max="9999999" type="number" th:field="*{severidade1}" placeholder="0" value="0" /> 
+												  <span	class="help-block small"></span>
+												   
+										</div>
+										<!-- <div class="form-group col-lg-6"
 											th:classappend="${#fields.hasErrors('erroTipo')} ? has-error">
 											<label for="erroTipo" class="control-label">Tipo de
 												Erro:</label><select class="form-control " th:field="*{erroTipo}">
@@ -186,11 +210,13 @@
 												<option th:each="erroTipo : ${erroTipoLista}" 
 													th:value="${erroTipo.nome}" th:text="${erroTipo.nome}"></option>
 											</select> <span class="help-block small"></span>
-										</div>
+										</div> -->
 									</div>
-
-									<div class="row">
-										<div class="form-group col-lg-6"
+									
+										<div class="row">
+										
+									
+											<div class="form-group col-lg-3"
 											th:classappend="${#fields.hasErrors('fluxo')} ? has-error">
 											<label for="fluxo" class="control-label">Fluxo:</label><select
 												class="form-control " th:field="*{fluxo}">
@@ -200,7 +226,7 @@
 											</select>
 										</div>
 
-										<div class="form-group col-lg-6"
+										<div class="form-group col-lg-3"
 											th:classappend="${#fields.hasErrors('tipo')} ? has-error">
 											<label for="tipo" class="control-label">Tipo de
 												Teste:</label><select class="form-control " th:field="*{tipo}">
@@ -209,10 +235,8 @@
 													th:value="${tipo.nome}" th:text="${tipo.nome}"></option>
 											</select>
 										</div>
-									</div>
-
-									<div class="row">
-										<div class="form-group col-lg-6"
+										
+										<div class="form-group col-lg-3"
 											th:classappend="${#fields.hasErrors('modulo')} ? has-error">
 											<label for="modulo" class="control-label">M&oacute;dulo:</label><select
 												class="form-control " th:field="*{modulo}">
@@ -221,7 +245,7 @@
 													th:value="${modulo.nome}" th:text="${modulo.nome}"></option>
 											</select> <span class="help-block small"></span>
 										</div>
-										<div class="form-group col-lg-6"
+										<div class="form-group col-lg-3"
 											th:classappend="${#fields.hasErrors('status')} ? has-error">
 											<label for="status" class="control-label">Status:</label> <select
 												class="form-control " th:field="*{status}">
@@ -230,6 +254,14 @@
 													th:value="${status.nome}" th:text="${status.nome}"></option>
 											</select><span class="help-block small"></span>
 										</div>
+									</div>
+
+									<!-- <div class="row"> -->
+									
+									<!-- </div> -->
+
+									<div class="row">
+										
 									</div>
 
 

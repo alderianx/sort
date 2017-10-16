@@ -12,8 +12,8 @@ public class TarefaCadastroForm {
 	@NotBlank(message = "*Por favor! insira o [Nº da Tarefa]")
 	private String numeroTarefa;
 
-	@NotBlank(message = "*Por favor! insira o [Nº de Erros Encontrados]")
-	private String qtdErros;
+	/*@NotBlank(message = "*Por favor! insira o [Nº de Erros Encontrados]")
+	private String qtdErros;*/
 
 	private boolean erroCaminhoFeliz;
 
@@ -35,7 +35,6 @@ public class TarefaCadastroForm {
 	@NotBlank(message = "*Por favor! insira um [Tipo de Teste]")
 	private String tipo;
 
-
 	private String erroTipo;
 
 	private String observacaoTarefa;
@@ -43,7 +42,15 @@ public class TarefaCadastroForm {
 	private String tarefaParentesco;
 
 	private String deadLine;
-	
+
+	private String severidade1;
+
+	private String severidade2;
+
+	private String severidade3;
+
+	private String severidade4;
+
 	public TarefaCadastroForm() {
 
 	}
@@ -56,14 +63,14 @@ public class TarefaCadastroForm {
 		this.numeroTarefa = numeroTarefa;
 	}
 
-	public String getQtdErros() {
+	/*public String getQtdErros() {
 		return qtdErros;
 	}
 
 	public void setQtdErros(String qtdErros) {
 		this.qtdErros = qtdErros;
 	}
-
+*/
 	public boolean isErroCaminhoFeliz() {
 		return erroCaminhoFeliz;
 	}
@@ -159,7 +166,39 @@ public class TarefaCadastroForm {
 	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
 	}
-	
-	
+
+	public String getSeveridade1() {
+		return severidade1;
+	}
+
+	public void setSeveridade1(String severidade1) {
+		this.severidade1 = severidade1;
+	}
+
+	public String getSeveridade2() {
+		return severidade2;
+	}
+
+	public void setSeveridade2(String severidade2) {
+		this.severidade2 = severidade2;
+	}
+
+	public String getSeveridade3() {
+		return severidade3;
+	}
+
+	public void setSeveridade3(String severidade3) {
+		this.severidade3 = severidade3;
+	}
+
+	public String getSeveridade4() {
+		return severidade4;
+	}
+
+	public void setSeveridade4(String severidade4) {
+		this.severidade4 = severidade4;
+	}
+
+
 
 }
