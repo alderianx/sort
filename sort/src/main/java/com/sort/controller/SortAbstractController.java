@@ -40,7 +40,6 @@ public class SortAbstractController {
 		List<Usuario> listaUsuarioTipo = usuarioRepository.findAll();
 		modelAndView.addObject("listarUsuarios", listaUsuarioTipo);
 		
-		//List<Tarefa> listaTarefa =tarefaService.findAllTarefa();
 		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
 		
 
@@ -48,7 +47,7 @@ public class SortAbstractController {
 			modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 			modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 					+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
-			modelAndView.addObject("adminMessage", "Acesso restrito apenas para usuários Administradores!");
+			modelAndView.addObject("adminMessage", "Acesso restrito apenas para usuï¿½rios Administradores!");
 			modelAndView.addObject("listarTarefasMes", listaTarefaMes);
 		} else {
 			modelAndView.addObject("userTipo", 4);

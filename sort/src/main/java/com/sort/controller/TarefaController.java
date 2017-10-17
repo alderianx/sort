@@ -54,28 +54,14 @@ public class TarefaController extends SortAbstractController {
 	@Autowired
 	private ErroTipoRepository erroTipoRepository;
 	
-	
-	@RequestMapping(value = "/listarTarefaModal", method = RequestMethod.GET)
-	public ModelAndView listarTarefaModal() {
-		ModelAndView modelAndView = new ModelAndView("modals");
-		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
-		modelAndView.addObject("listarTarefasMes", listaTarefaMes);
-
-		List<Tarefa> listaTarefa = tarefaService.findAllTarefa();
-		modelAndView.addObject("listarTarefas", listaTarefa);
-
-		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
-		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
-				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
-		return modelAndView;
-	}
 
 	@RequestMapping(value = "/listarTarefa", method = RequestMethod.GET)
 	public ModelAndView listarTarefas() {
+	
 		ModelAndView modelAndView = new ModelAndView("index");
 		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
 		modelAndView.addObject("listarTarefasMes", listaTarefaMes);
-
+	
 		List<Tarefa> listaTarefa = tarefaService.findAllTarefa();
 		modelAndView.addObject("listarTarefas", listaTarefa);
 

@@ -1,6 +1,7 @@
 package com.sort.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -31,16 +32,16 @@ public class Tarefa implements Serializable {
 	private int qtdErros;
 
 	@Column(name = "tar_sev_1")
-	private int severidade1 = 0;
+	private int severidade1;
 
 	@Column(name = "tar_sev_2")
-	private int severidade2 = 0;
+	private int severidade2;
 
 	@Column(name = "tar_sev_3")
-	private int severidade3 = 0;
+	private int severidade3;
 
 	@Column(name = "tar_sev_4")
-	private int severidade4 = 0;
+	private int severidade4;
 
 	@Column(name = "tar_erroCaminhoFeliz")
 	private boolean erroCaminhoFeliz;
@@ -67,8 +68,14 @@ public class Tarefa implements Serializable {
 	@Column(name = "tar_data_fim_tarefa")
 	private Date fimTeste;
 
+	@Column(name = "tar_tempo_gasto")
+	private Timestamp tempoGasto;
+
 	@Column(name = "tar_descricao")
 	private String descricao;
+
+	@Column(name = "tar_nome")
+	private String nome;
 
 	@Column(name = "tar_observacao")
 	private String observacao;
@@ -113,6 +120,38 @@ public class Tarefa implements Serializable {
 		this.qtdErros = qtdErros;
 	}
 
+	public int getSeveridade1() {
+		return severidade1;
+	}
+
+	public void setSeveridade1(int severidade1) {
+		this.severidade1 = severidade1;
+	}
+
+	public int getSeveridade2() {
+		return severidade2;
+	}
+
+	public void setSeveridade2(int severidade2) {
+		this.severidade2 = severidade2;
+	}
+
+	public int getSeveridade3() {
+		return severidade3;
+	}
+
+	public void setSeveridade3(int severidade3) {
+		this.severidade3 = severidade3;
+	}
+
+	public int getSeveridade4() {
+		return severidade4;
+	}
+
+	public void setSeveridade4(int severidade4) {
+		this.severidade4 = severidade4;
+	}
+
 	public boolean isErroCaminhoFeliz() {
 		return erroCaminhoFeliz;
 	}
@@ -129,6 +168,14 @@ public class Tarefa implements Serializable {
 		this.numeroTarefa = numeroTarefa;
 	}
 
+	public Long getNumeroTarefaPai() {
+		return numeroTarefaPai;
+	}
+
+	public void setNumeroTarefaPai(Long numeroTarefaPai) {
+		this.numeroTarefaPai = numeroTarefaPai;
+	}
+
 	public Fluxo getFluxo() {
 		return fluxo;
 	}
@@ -143,6 +190,14 @@ public class Tarefa implements Serializable {
 
 	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
+	}
+
+	public Date getDeadLine() {
+		return deadLine;
+	}
+
+	public void setDeadLine(Date deadLine) {
+		this.deadLine = deadLine;
 	}
 
 	public Date getInicioTeste() {
@@ -167,6 +222,14 @@ public class Tarefa implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getObservacao() {
@@ -225,52 +288,12 @@ public class Tarefa implements Serializable {
 		this.tarefaParentesco = tarefaParentesco;
 	}
 
-	public Date getDeadLine() {
-		return deadLine;
+	public Timestamp getTempoGasto() {
+		return tempoGasto;
 	}
 
-	public void setDeadLine(Date deadLine) {
-		this.deadLine = deadLine;
-	}
-
-	public Long getNumeroTarefaPai() {
-		return numeroTarefaPai;
-	}
-
-	public void setNumeroTarefaPai(Long numeroTarefaPai) {
-		this.numeroTarefaPai = numeroTarefaPai;
-	}
-
-	public int getSeveridade1() {
-		return severidade1;
-	}
-
-	public void setSeveridade1(int severidade1) {
-		this.severidade1 = severidade1;
-	}
-
-	public int getSeveridade2() {
-		return severidade2;
-	}
-
-	public void setSeveridade2(int severidade2) {
-		this.severidade2 = severidade2;
-	}
-
-	public int getSeveridade3() {
-		return severidade3;
-	}
-
-	public void setSeveridade3(int severidade3) {
-		this.severidade3 = severidade3;
-	}
-
-	public int getSeveridade4() {
-		return severidade4;
-	}
-
-	public void setSeveridade4(int severidade4) {
-		this.severidade4 = severidade4;
+	public void setTempoGasto(Timestamp tempoGasto) {
+		this.tempoGasto = tempoGasto;
 	}
 
 }

@@ -1,44 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: css-head"></head>
+<head th:replace="layout :: css-head"><meta charset="utf-8" /></head>
 
-<!-- 			<thead>
-											<tr>
-												<th>#</th>
-												<th>N&ordm; da tarefa</th>
-												<th>Data Cria&ccedil;&atilde;o</th>
-												<th>Testador</th>
-												<th>N&ordm; de Erros</th>
-												<th>Erros no Caminho Feliz</th>
-												<th>Tempo Gasto</th>
-												<th>Fluxo</th>
-												<th>M&oacute;dulo</th>
-												<th>Tipo de Erro</th>
-												<th>Status</th>
-												<th>Ver</th>
-											</tr>
-										</thead>
-									
 
-											<tr th:each="tarefa,row : ${listarTarefasMes}">
-												<td th:text="${row.count}"></td>
-												<td th:text="${tarefa.numeroTarefa}"></td>
-												<td
-													th:text="${#calendars.format(tarefa.fimTeste,'dd MMMM yyyy')}"></td>
-												<td th:text="${tarefa.usuario.nome}"></td>
-												<td th:text="${tarefa.qtdErros}"></td>
-
-												<td th:switch="${tarefa.erroCaminhoFeliz}">
-												<b	th:case="true">Sim</b> <b th:case="FALSE">N&atilde;o</b></td>
-
-												<td th:text="${tarefa.fluxo.nome}"></td>
-												<td th:text="${tarefa.modulo.nome}"></td>
-												<td th:text="${tarefa.erroTipo.nome}"></td>
-												<td th:text="${tarefa.status.nome}"></td>
-
-												<td th:switch="${tarefa.status.id}">
-											
-									 -->
 
 <!-- Modal de tarefas da pagina de index -->
 <div th:fragment="modal-tarefa" class="modal fade"	th:id="'myModal' + ${row.count}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -49,7 +13,7 @@
 				<div class="modal-header text-center" >
 					<h4 class="modal-title"
 						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-					<small>Totais de erros encontrados na tarefa</small>
+					<small th:text="${tarefa.nome}"></small>
 				</div>
 														
 					<div class="modal-body">
@@ -66,12 +30,7 @@
 							<p class="m-t-none">Data do teste:</p>
 							<h4 class="m-t-xs" th:text="${#calendars.format(tarefa.fimTeste,'dd/MM/yyyy')}"></h4>
 						</div>
-						
-						<!-- <div class="col-md-4">
-							<p class="m-t-none">Total de erros:</p>
-							<h4 class="m-t-xs" th:text="${tarefa.qtdErros}"></h4>				
-						</div> -->
-						
+												
 						<div class="col-md-6">
 							<p class="m-t-none">Erro no caminho feliz:</p>
 							<h4 class="m-t-xs" th:switch="${tarefa.erroCaminhoFeliz}">
@@ -90,11 +49,11 @@
 						<h4 class="m-t-xs" th:text="${tarefa.modulo.nome}"></h4>
 						</div>
 							
-						<!-- 	
+						
 						<div class="col-md-4">
 						<p class="m-t-none">Tempo gasto:</p>
-						<h4 class="m-t-xs" th:text="${}"></h4>
-						</div> -->
+						<h4 class="m-t-xs" th:text="${tempoTarefa}"></h4>
+						</div> 
 						
 						
 						<div class="col-md-6">
@@ -105,22 +64,22 @@
 						
 						<div class="col-md-6">
 						<p class="m-t-none">Erros visuais:</p>
-						<h4 class="m-t-xs" th:text="${0}"></h4>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade4}"></h4>
 						</div>
 						
 						<div class="col-md-6">
 						<p class="m-t-none">Erros de navega&ccedil;&atilde;o:</p>
-						<h4 class="m-t-xs" th:text="${0}"></h4>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade3}"></h4>
 						</div>	
 						
 						<div class="col-md-6">
 						<p class="m-t-none">Erros de neg&oacute;cio:</p>
-						<h4 class="m-t-xs" th:text="${0}"></h4>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade2}"></h4>
 						</div>	
 						
 						<div class="col-md-6">
 						<p class="m-t-none">Comportamento inesperado:</p>
-						<h4 class="m-t-xs" th:text="${0}"></h4>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade1}"></h4>
 						</div>	
 							
 							
@@ -128,7 +87,7 @@
 					</div>
 					
 				</div>					
-						<div class="text-center" ><p class="text-center">Total de <b th:text="${{tarefa.qtdErros}}"></b> erros encontrados na tarefa</p></div>
+						<div class="text-center" ><p class="text-center">Total de <b th:text="${tarefa.severidade4+tarefa.severidade3+tarefa.severidade2+tarefa.severidade1}"></b> erros encontrados na tarefa</p></div>
 				<div class="modal-footer">
 			
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -155,7 +114,7 @@
 							</h4>
 						</div>
 						<div class="col-md-4">
-							<small class="stat-label">Teste mês %</small>
+							<small class="stat-label">Teste mÃªs %</small>
 							<h4 class="m-t-xs">
 								%20,20 <i class="fa fa-level-down c-white"></i>
 							</h4>
@@ -201,7 +160,7 @@
 							</h4>
 						</div>
 						<div class="col-md-4">
-							<small class="stat-label">Teste mês %</small>
+							<small class="stat-label">Teste mÃªs %</small>
 							<h4 class="m-t-xs">
 								%20,20 <i class="fa fa-level-down c-white"></i>
 							</h4>

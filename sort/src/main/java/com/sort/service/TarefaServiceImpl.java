@@ -8,14 +8,12 @@ import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import com.sort.controller.SortAbstractController;
 import com.sort.form.TarefaCadastroForm;
 import com.sort.model.Tarefa;
 import com.sort.model.Usuario;
-import com.sort.repository.ErroTipoRepository;
 import com.sort.repository.FluxoRepository;
 import com.sort.repository.ModuloRepository;
 import com.sort.repository.StatusRepository;
@@ -46,9 +44,10 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 	@Autowired
 	private TarefaTipoRepository tarefaTipoRepository;
 
-	@Autowired
-	private ErroTipoRepository erroTipoRepository;
 
+	
+	
+	@Autowired
 	@Override
 	public void saveTarefa(TarefaCadastroForm tarefaCadastroForm) {
 		Tarefa tarefa = new Tarefa();
@@ -60,16 +59,18 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 			tarefa.setFimTeste(calFim.getTime());
 			tarefa.setNumeroTarefa(Long.parseLong(tarefaCadastroForm.getNumeroTarefa()));
 			tarefa.setErroCaminhoFeliz(tarefaCadastroForm.isErroCaminhoFeliz());
-			//tarefa.setQtdErros(Integer.parseInt(tarefaCadastroForm.getQtdErros()));
-			tarefa.setSeveridade1(Integer.parseInt(tarefaCadastroForm.getSeveridade1()));
-			tarefa.setSeveridade2(Integer.parseInt(tarefaCadastroForm.getSeveridade2()));
-			tarefa.setSeveridade3(Integer.parseInt(tarefaCadastroForm.getSeveridade3()));
-			tarefa.setSeveridade4(Integer.parseInt(tarefaCadastroForm.getSeveridade4()));
+			
+			
+			tarefa.setSeveridade1(tarefaCadastroForm.getSeveridade1());
+			tarefa.setSeveridade2(tarefaCadastroForm.getSeveridade2());
+			tarefa.setSeveridade3(tarefaCadastroForm.getSeveridade3());
+			tarefa.setSeveridade4(tarefaCadastroForm.getSeveridade4());
+			tarefa.setNome(tarefaCadastroForm.getNome());
 			tarefa.setStatus(statusRepository.findByNome(tarefaCadastroForm.getStatus()));
 			tarefa.setFluxo(fluxoRepository.findByNome(tarefaCadastroForm.getFluxo()));
 			tarefa.setModulo(moduloRepository.findByNome(tarefaCadastroForm.getModulo()));
 			tarefa.setTipo(tarefaTipoRepository.findByNome(tarefaCadastroForm.getTipo()));
-			tarefa.setErroTipo(erroTipoRepository.findByNome(tarefaCadastroForm.getErroTipo()));
+	
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -89,11 +90,5 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 	public List<Tarefa> findAllTarefa() {
 		return	tarefaRepository.findAll();		
 	}
-
-	
-
-	
-	
-
 
 }

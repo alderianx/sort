@@ -12,8 +12,10 @@ public class TarefaCadastroForm {
 	@NotBlank(message = "*Por favor! insira o [Nº da Tarefa]")
 	private String numeroTarefa;
 
-	/*@NotBlank(message = "*Por favor! insira o [Nº de Erros Encontrados]")
-	private String qtdErros;*/
+	/*
+	 * @NotBlank(message = "*Por favor! insira o [Nº de Erros Encontrados]") private
+	 * String qtdErros;
+	 */
 
 	private boolean erroCaminhoFeliz;
 
@@ -37,19 +39,21 @@ public class TarefaCadastroForm {
 
 	private String erroTipo;
 
+	private String nome;
+
 	private String observacaoTarefa;
 
 	private String tarefaParentesco;
 
 	private String deadLine;
 
-	private String severidade1;
+	private int severidade1;
 
-	private String severidade2;
+	private int severidade2;
 
-	private String severidade3;
+	private int severidade3;
 
-	private String severidade4;
+	private int severidade4;
 
 	public TarefaCadastroForm() {
 
@@ -63,14 +67,11 @@ public class TarefaCadastroForm {
 		this.numeroTarefa = numeroTarefa;
 	}
 
-	/*public String getQtdErros() {
-		return qtdErros;
-	}
-
-	public void setQtdErros(String qtdErros) {
-		this.qtdErros = qtdErros;
-	}
-*/
+	/*
+	 * public String getQtdErros() { return qtdErros; }
+	 * 
+	 * public void setQtdErros(String qtdErros) { this.qtdErros = qtdErros; }
+	 */
 	public boolean isErroCaminhoFeliz() {
 		return erroCaminhoFeliz;
 	}
@@ -97,6 +98,14 @@ public class TarefaCadastroForm {
 
 	public String getFimTeste() {
 		return fimTeste;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public void setFimTeste(String fimTeste) {
@@ -167,38 +176,36 @@ public class TarefaCadastroForm {
 		this.deadLine = deadLine;
 	}
 
-	public String getSeveridade1() {
+	public int getSeveridade1() {
 		return severidade1;
 	}
 
-	public void setSeveridade1(String severidade1) {
+	public void setSeveridade1(int severidade1) {
 		this.severidade1 = severidade1;
 	}
 
-	public String getSeveridade2() {
+	public int getSeveridade2() {
 		return severidade2;
 	}
 
-	public void setSeveridade2(String severidade2) {
+	public void setSeveridade2(int severidade2) {
 		this.severidade2 = severidade2;
 	}
 
-	public String getSeveridade3() {
+	public int getSeveridade3() {
 		return severidade3;
 	}
 
-	public void setSeveridade3(String severidade3) {
+	public void setSeveridade3(int severidade3) {
 		this.severidade3 = severidade3;
 	}
 
-	public String getSeveridade4() {
+	public int getSeveridade4() {
 		return severidade4;
 	}
 
-	public void setSeveridade4(String severidade4) {
+	public void setSeveridade4(int severidade4) {
 		this.severidade4 = severidade4;
 	}
-
-
 
 }

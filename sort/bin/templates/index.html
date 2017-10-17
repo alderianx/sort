@@ -101,7 +101,7 @@
 												<th>N&ordm; da tarefa</th>
 												<th>Data Cria&ccedil;&atilde;o</th>
 												<th>Testador</th>
-												<th>N&ordm; de Erros</th>
+												<!-- <th>N&ordm; de Erros</th> -->
 												<th>Erros no Caminho Feliz</th>
 												<!-- <th>Tempo Gasto</th> -->
 												<th>Fluxo</th>
@@ -119,7 +119,7 @@
 												<td
 													th:text="${#calendars.format(tarefa.fimTeste,'dd MMMM yyyy')}"></td>
 												<td th:text="${tarefa.usuario.nome}"></td>
-												<td th:text="${tarefa.qtdErros}"></td>
+												<!-- <td th:text="${tarefa.qtdErros}"></td> -->
 
 												<td th:switch="${tarefa.erroCaminhoFeliz}"><b
 													th:case="true">Sim</b> <b th:case="FALSE">N&atilde;o</b></td>

@@ -18,7 +18,7 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long>, JpaSpecif
 	@Query("SELECT t FROM Tarefa t Where usuario.id = ?1")
 	public List<Tarefa> tarefaByUsuario(Long id);
 
-	@Query(" SELECT (fimTeste - inicioTeste) as tempo FROM Tarefa t Where usuario.id = ?1")
-	public List<Tarefa> tarefaByTempo(Long id);
+	@Query(" SELECT (fimTeste - inicioTeste) as tempo FROM Tarefa t Where t.id = ?1")
+	public Tarefa tarefaByTempo(Long id);
 
 }
