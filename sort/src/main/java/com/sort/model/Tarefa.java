@@ -1,12 +1,10 @@
 package com.sort.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -68,9 +66,7 @@ public class Tarefa implements Serializable {
 	@Column(name = "tar_data_fim_tarefa")
 	private Date fimTeste;
 
-	@Column(name = "tar_tempo_gasto")
-	private Timestamp tempoGasto;
-
+	
 	@Column(name = "tar_descricao")
 	private String descricao;
 
@@ -288,12 +284,5 @@ public class Tarefa implements Serializable {
 		this.tarefaParentesco = tarefaParentesco;
 	}
 
-	public Timestamp getTempoGasto() {
-		return tempoGasto;
-	}
-
-	public void setTempoGasto(Timestamp tempoGasto) {
-		this.tempoGasto = tempoGasto;
-	}
 
 }
