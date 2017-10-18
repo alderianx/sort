@@ -10,6 +10,9 @@ import com.sort.model.Tarefa;
 
 @Repository("tarefaRepository")
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
+	/*
+	SELECT t.*, (tar_data_fim_tarefa - tar_data_inicio_tarefa) as "tempo" FROM tb_Tarefa t 
+	Where DATE_PART('MONTH', tar_data_fim_tarefa) = DATE_PART('MONTH', CURRENT_TIMESTAMP)*/
 	
 			//@Query("SELECT t FROM Tarefa t Where DATE_PART('MONTH', fimTeste) = DATE_PART('MONTH', CURRENT_TIMESTAMP)")
 	@Query("SELECT t FROM Tarefa t Where DATE_PART('MONTH', fimTeste) = DATE_PART('MONTH', CURRENT_TIMESTAMP)")
