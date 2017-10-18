@@ -32,7 +32,7 @@ public class Tarefa implements Serializable {
 	private int qtdErros;
 
 	@Column(name = "tar_sev_1")
-	private int severidade1;
+	private Integer severidade1;
 
 	@Column(name = "tar_sev_2")
 	private int severidade2;
@@ -120,11 +120,11 @@ public class Tarefa implements Serializable {
 		this.qtdErros = qtdErros;
 	}
 
-	public int getSeveridade1() {
+	public Integer getSeveridade1() {
 		return severidade1;
 	}
 
-	public void setSeveridade1(int severidade1) {
+	public void setSeveridade1(Integer severidade1) {
 		this.severidade1 = severidade1;
 	}
 

@@ -47,7 +47,7 @@ public class TarefaCadastroForm {
 
 	private String deadLine;
 
-	private int severidade1;
+	private Integer severidade1;
 
 	private int severidade2;
 
@@ -176,11 +176,13 @@ public class TarefaCadastroForm {
 		this.deadLine = deadLine;
 	}
 
-	public int getSeveridade1() {
+	
+
+	public Integer getSeveridade1() {
 		return severidade1;
 	}
 
-	public void setSeveridade1(int severidade1) {
+	public void setSeveridade1(Integer severidade1) {
 		this.severidade1 = severidade1;
 	}
 

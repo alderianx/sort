@@ -16,9 +16,8 @@
 					<small th:text="${tarefa.nome}"></small>
 				</div>
 														
-					<div class="modal-body">
-					
-					
+				<div class="modal-body">
+										
 					<div class="row">
 						
 						<div class="col-md-6">
@@ -35,6 +34,178 @@
 							<p class="m-t-none">Erro no caminho feliz:</p>
 							<h4 class="m-t-xs" th:switch="${tarefa.erroCaminhoFeliz}">
 							<b	th:case="true">Sim</b> <b th:case="false">N&atilde;o</b>
+							
+							</h4>		
+						</div>
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Fluxo:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.fluxo.nome}"></h4>
+						</div>
+					
+						<div class="col-md-6">
+						<p class="m-t-none">Módulo:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.modulo.nome}"></h4>
+						</div>
+							
+						
+						<div class="col-md-4">
+						<p class="m-t-none">Tempo gasto:</p>
+						<h4 class="m-t-xs" th:text="${tempoTarefa}"></h4>
+						</div> 
+						
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Status:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.status.nome}"></h4>
+						</div>	
+						
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros visuais:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade4}"></h4>
+						</div>
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros de navega&ccedil;&atilde;o:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade3}"></h4>
+						</div>	
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros de negócio:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade2}"></h4>
+						</div>	
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Comportamento inesperado:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade1}"></h4>
+						</div>	
+							
+							
+						
+					</div>
+					
+				</div>					
+						<div class="text-center" ><p class="text-center">Total de <b th:text="${tarefa.severidade4+tarefa.severidade3+tarefa.severidade2+tarefa.severidade1}"></b> erros encontrados na tarefa</p></div>
+				<div class="modal-footer">
+			
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
+				</div>
+			</div>
+		</div>
+
+		<div th:case="2" class="modal-dialog panel panel-filled panel-c-success">
+			<div class="modal-content">
+				<div class="modal-header text-center" >
+					<h4 class="modal-title"
+						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
+					<small th:text="${tarefa.nome}"></small>
+				</div>
+														
+				<div class="modal-body">
+										
+					<div class="row">
+						
+						<div class="col-md-6">
+							<p class="m-t-none">Nome do testador:</p>
+							<h4 th:text="${tarefa.usuario.nome}"></h4>							
+						</div>
+						
+						<div class="col-md-6">
+							<p class="m-t-none">Data do teste:</p>
+							<h4 class="m-t-xs" th:text="${#calendars.format(tarefa.fimTeste,'dd/MM/yyyy')}"></h4>
+						</div>
+												
+						<div class="col-md-6">
+							<p class="m-t-none">Erro no caminho feliz:</p>
+							<h4 class="m-t-xs" th:switch="${tarefa.erroCaminhoFeliz}">
+							<b	th:case="true">Sim</b> <b th:case="false">N&atilde;o</b>
+							
+							</h4>		
+						</div>
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Fluxo:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.fluxo.nome}"></h4>
+						</div>
+					
+						<div class="col-md-6">
+						<p class="m-t-none">Módulo:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.modulo.nome}"></h4>
+						</div>							
+						
+						<div class="col-md-4">
+						<p class="m-t-none">Tempo gasto:</p>
+						<h4 class="m-t-xs" th:text="${tempoTarefa}"></h4>
+						</div> 
+						
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Status:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.status.nome}"></h4>
+						</div>	
+						
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros visuais:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade4}"></h4>
+						</div>
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros de navega&ccedil;&atilde;o:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade3}"></h4>
+						</div>	
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Erros de neg&oacute;cio:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade2}"></h4>
+						</div>	
+						
+						<div class="col-md-6">
+						<p class="m-t-none">Comportamento inesperado:</p>
+						<h4 class="m-t-xs" th:text="${tarefa.severidade1}"></h4>
+						</div>								
+						
+					</div>
+					
+				</div>					
+						<div class="text-center" ><p class="text-center">Total de <b th:text="${tarefa.severidade4+tarefa.severidade3+tarefa.severidade2+tarefa.severidade1}"></b> erros encontrados na tarefa</p></div>
+				<div class="modal-footer">
+			
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
+				</div>
+			</div>
+		</div>
+
+		<div th:case="3" class="modal-dialog panel panel-filled panel-c-warning">
+
+			<div class="modal-content">
+				<div class="modal-header text-center" >
+					<h4 class="modal-title"
+						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
+					<small th:text="${tarefa.nome}"></small>
+				</div>
+														
+				<div class="modal-body">
+										
+					<div class="row">
+						
+						<div class="col-md-6">
+							<p class="m-t-none">Nome do testador:</p>
+							<h4 th:text="${tarefa.usuario.nome}"></h4>							
+						</div>
+						
+						<div class="col-md-6">
+							<p class="m-t-none">Data do teste:</p>
+							<h4 class="m-t-xs" th:text="${#calendars.format(tarefa.fimTeste,'dd/MM/yyyy')}"></h4>
+						</div>
+												
+						<div class="col-md-6">
+							<p class="m-t-none">Erro no caminho feliz:</p>
+							<h4 class="m-t-xs" th:switch="${tarefa.erroCaminhoFeliz}">
+							<b	th:case="true">Sim</b> <b th:case="false">Não</b>
 							
 							</h4>		
 						</div>
@@ -73,16 +244,14 @@
 						</div>	
 						
 						<div class="col-md-6">
-						<p class="m-t-none">Erros de neg&oacute;cio:</p>
+						<p class="m-t-none">Erros de negócio:</p>
 						<h4 class="m-t-xs" th:text="${tarefa.severidade2}"></h4>
 						</div>	
 						
 						<div class="col-md-6">
 						<p class="m-t-none">Comportamento inesperado:</p>
 						<h4 class="m-t-xs" th:text="${tarefa.severidade1}"></h4>
-						</div>	
-							
-							
+						</div>										
 						
 					</div>
 					
@@ -90,97 +259,6 @@
 						<div class="text-center" ><p class="text-center">Total de <b th:text="${tarefa.severidade4+tarefa.severidade3+tarefa.severidade2+tarefa.severidade1}"></b> erros encontrados na tarefa</p></div>
 				<div class="modal-footer">
 			
-					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
-				</div>
-			</div>
-		</div>
-
-		<div th:case="2" class="modal-dialog panel panel-filled panel-c-success">
-			<div class="modal-content">
-				<div class="modal-header text-center">
-					<h4 class="modal-title"
-						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-					<small></small>
-				</div>
-				<div class="modal-body">
-					<p class="m-t-none">Nome:</p>
-					<h4 th:text="${tarefa.usuario.nome}"></h4>
-					<div class="row">
-						<div class="col-md-4">
-							<small class="stat-label">Teste</small>
-							<h4 class="m-t-xs">
-								<i class="fa fa-level-up text-accent"></i>
-							</h4>
-						</div>
-						<div class="col-md-4">
-							<small class="stat-label">Teste mês %</small>
-							<h4 class="m-t-xs">
-								%20,20 <i class="fa fa-level-down c-white"></i>
-							</h4>
-						</div>
-						<div class="col-md-4">
-							<small class="stat-label">Teste ano</small>
-							<h4 class="m-t-xs">
-								246,40 <i class="fa fa-level-up text-accent"></i>
-							</h4>
-						</div>
-					</div>
-					<div class="progress m-t-xs full progress-small">
-						<div style="width: 95%" aria-valuemax="100" aria-valuemin="0"
-							aria-valuenow="65" role="progressbar"
-							class=" progress-bar progress-bar-warning">
-							<span class="sr-only">65% Completo (sucesso)</span>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
-				</div>
-			</div>
-		</div>
-
-		<div th:case="3" class="modal-dialog panel panel-filled panel-c-warning">
-
-			<div class="modal-content">
-				<div class="modal-header text-center">
-					<h4 class="modal-title"
-						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-					<small></small>
-				</div>
-				<div class="modal-body">
-					<p class="m-t-none">Nome:</p>
-					<h4 th:text="${tarefa.usuario.nome}"></h4>
-					<div class="row">
-						<div class="col-md-4">
-							<small class="stat-label">Teste</small>
-							<h4 class="m-t-xs">
-								<i class="fa fa-level-up text-accent"></i>
-							</h4>
-						</div>
-						<div class="col-md-4">
-							<small class="stat-label">Teste mês %</small>
-							<h4 class="m-t-xs">
-								%20,20 <i class="fa fa-level-down c-white"></i>
-							</h4>
-						</div>
-						<div class="col-md-4">
-							<small class="stat-label">Teste ano</small>
-							<h4 class="m-t-xs">
-								246,40 <i class="fa fa-level-up text-accent"></i>
-							</h4>
-						</div>
-					</div>
-					<div class="progress m-t-xs full progress-small">
-						<div style="width: 95%" aria-valuemax="100" aria-valuemin="0"
-							aria-valuenow="65" role="progressbar"
-							class=" progress-bar progress-bar-warning">
-							<span class="sr-only">65% Completo (sucesso)</span>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
 				</div>

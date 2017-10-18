@@ -44,10 +44,7 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 	@Autowired
 	private TarefaTipoRepository tarefaTipoRepository;
 
-
-	
-	
-	@Autowired
+		
 	@Override
 	public void saveTarefa(TarefaCadastroForm tarefaCadastroForm) {
 		Tarefa tarefa = new Tarefa();
@@ -58,9 +55,10 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 			tarefa.setInicioTeste(toDate(tarefaCadastroForm.getInicioTeste()));
 			tarefa.setFimTeste(calFim.getTime());
 			tarefa.setNumeroTarefa(Long.parseLong(tarefaCadastroForm.getNumeroTarefa()));
-			tarefa.setErroCaminhoFeliz(tarefaCadastroForm.isErroCaminhoFeliz());
-			
-			
+			tarefa.setErroCaminhoFeliz(tarefaCadastroForm.isErroCaminhoFeliz());			
+//			if(	tarefaCadastroForm.getSeveridade1().equals("")) {
+//				tarefa.setSeveridade1(0);
+//			}
 			tarefa.setSeveridade1(tarefaCadastroForm.getSeveridade1());
 			tarefa.setSeveridade2(tarefaCadastroForm.getSeveridade2());
 			tarefa.setSeveridade3(tarefaCadastroForm.getSeveridade3());
