@@ -26,6 +26,9 @@ public class Tarefa implements Serializable {
 	@Column(name = "tar_id")
 	private Long id;
 
+	@Column(name = "tar_codigo")
+	private Long codigo;
+
 	@Column(name = "tar_qtd_erros")
 	private int qtdErros;
 
@@ -66,7 +69,9 @@ public class Tarefa implements Serializable {
 	@Column(name = "tar_data_fim_tarefa")
 	private Date fimTeste;
 
-	
+	@Column(name = "tar_tempo")
+	private Double tempoGasto;
+
 	@Column(name = "tar_descricao")
 	private String descricao;
 
@@ -106,6 +111,14 @@ public class Tarefa implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 	public int getQtdErros() {
@@ -284,5 +297,12 @@ public class Tarefa implements Serializable {
 		this.tarefaParentesco = tarefaParentesco;
 	}
 
+	public Double getTempoGasto() {
+		return tempoGasto;
+	}
+
+	public void setTempoGasto(Double tempoGasto) {
+		this.tempoGasto = tempoGasto;
+	}
 
 }

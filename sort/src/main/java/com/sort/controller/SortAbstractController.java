@@ -34,6 +34,7 @@ public class SortAbstractController {
 		Usuario user = usuarioService.findUsuarioByLogin(auth.getName());
 		return user;
 	}
+	
 
 	public ModelAndView getHome() {
 		ModelAndView modelAndView = new ModelAndView();

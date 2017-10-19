@@ -1,5 +1,7 @@
 package com.sort.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 /**@author Alderian**/
 
 import java.util.Calendar;
@@ -68,6 +70,9 @@ public class TarefaController extends SortAbstractController {
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
+		
+		List<Double> listaTempoTarefa = tarefaRepository.tarefaByTempo();
+		modelAndView.addObject("listarTarefasTempo", listaTempoTarefa);
 		return modelAndView;
 	}
 
@@ -77,7 +82,7 @@ public class TarefaController extends SortAbstractController {
 
 		List<Tarefa> listaTarefaUsuario = tarefaRepository.tarefaByUsuario(getUsuarioLogado().getId());
 		modelAndView.addObject("listarTarefasUsuario", listaTarefaUsuario);
-
+		
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");

@@ -52,13 +52,12 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 		Calendar calFim = Calendar.getInstance();
 		try {
 			tarefa.setUsuario(usuarioRepository.findOne(user.getId()));
+			
 			tarefa.setInicioTeste(toDate(tarefaCadastroForm.getInicioTeste()));
 			tarefa.setFimTeste(calFim.getTime());
 			tarefa.setNumeroTarefa(Long.parseLong(tarefaCadastroForm.getNumeroTarefa()));
 			tarefa.setErroCaminhoFeliz(tarefaCadastroForm.isErroCaminhoFeliz());			
-//			if(	tarefaCadastroForm.getSeveridade1().equals("")) {
-//				tarefa.setSeveridade1(0);
-//			}
+				
 			tarefa.setSeveridade1(tarefaCadastroForm.getSeveridade1());
 			tarefa.setSeveridade2(tarefaCadastroForm.getSeveridade2());
 			tarefa.setSeveridade3(tarefaCadastroForm.getSeveridade3());
