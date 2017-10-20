@@ -48,7 +48,7 @@ public class SortAbstractController {
 			modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 			modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 					+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
-			modelAndView.addObject("adminMessage", "Acesso restrito apenas para usu�rios Administradores!");
+			modelAndView.addObject("adminMessage", "Acesso restrito apenas para usuários Administradores!");
 			modelAndView.addObject("listarTarefasMes", listaTarefaMes);
 		} else {
 			modelAndView.addObject("userTipo", 4);

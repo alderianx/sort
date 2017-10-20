@@ -1,6 +1,8 @@
 package com.sort.repository;
 
+
 import java.util.List;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -21,9 +23,7 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 	@Query("SELECT t FROM Tarefa t Where usuario.id = ?1")
 	public List<Tarefa> tarefaByUsuario(Long id);
 
-	@Query("SELECT (fimTeste - inicioTeste) as tempo FROM Tarefa t")
-	public List<Double> tarefaByTempo();
+	@Query("SELECT age(fimTeste , inicioTeste) as tempo FROM Tarefa where id=?1")
+	public List<Object> tarefaByTempo(Long id);
 	
-	Tarefa findById(Long id);
-
-}
+	}

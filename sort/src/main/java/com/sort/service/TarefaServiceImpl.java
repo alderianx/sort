@@ -57,7 +57,7 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 			tarefa.setFimTeste(calFim.getTime());
 			tarefa.setNumeroTarefa(Long.parseLong(tarefaCadastroForm.getNumeroTarefa()));
 			tarefa.setErroCaminhoFeliz(tarefaCadastroForm.isErroCaminhoFeliz());			
-				
+			
 			tarefa.setSeveridade1(tarefaCadastroForm.getSeveridade1());
 			tarefa.setSeveridade2(tarefaCadastroForm.getSeveridade2());
 			tarefa.setSeveridade3(tarefaCadastroForm.getSeveridade3());

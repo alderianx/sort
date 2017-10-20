@@ -1,11 +1,12 @@
 package com.sort.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import java.util.ArrayList;
 
 /**@author Alderian**/
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -59,20 +60,28 @@ public class TarefaController extends SortAbstractController {
 
 	@RequestMapping(value = "/listarTarefa", method = RequestMethod.GET)
 	public ModelAndView listarTarefas() {
-	
+		
 		ModelAndView modelAndView = new ModelAndView("index");
 		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
 		modelAndView.addObject("listarTarefasMes", listaTarefaMes);
 	
 		List<Tarefa> listaTarefa = tarefaService.findAllTarefa();
 		modelAndView.addObject("listarTarefas", listaTarefa);
-
+		
+		ArrayList<Object> array = new ArrayList<>();
+			
+			for(Tarefa tarefa : listaTarefaMes) {
+				array.add(tarefaRepository.tarefaByTempo(tarefa.getId()));
+				//tarefaRepository.tarefaByTempo(tarefa.getId());
+			}	
+			
+		array.size();
+		modelAndView.addObject("listarTarefaTempo", array);
+		
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
 		
-		List<Double> listaTempoTarefa = tarefaRepository.tarefaByTempo();
-		modelAndView.addObject("listarTarefasTempo", listaTempoTarefa);
 		return modelAndView;
 	}
 
