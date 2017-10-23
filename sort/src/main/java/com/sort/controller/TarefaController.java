@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -60,7 +59,7 @@ public class TarefaController extends SortAbstractController {
 
 	@RequestMapping(value = "/listarTarefa", method = RequestMethod.GET)
 	public ModelAndView listarTarefas() {
-		
+		ArrayList<Object> array = new ArrayList<>();
 		ModelAndView modelAndView = new ModelAndView("index");
 		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
 		modelAndView.addObject("listarTarefasMes", listaTarefaMes);
@@ -68,20 +67,18 @@ public class TarefaController extends SortAbstractController {
 		List<Tarefa> listaTarefa = tarefaService.findAllTarefa();
 		modelAndView.addObject("listarTarefas", listaTarefa);
 		
-		ArrayList<Object> array = new ArrayList<>();
-			
-			for(Tarefa tarefa : listaTarefaMes) {
-				array.add(tarefaRepository.tarefaByTempo(tarefa.getId()));
-				//tarefaRepository.tarefaByTempo(tarefa.getId());
-			}	
-			
-		array.size();
-		modelAndView.addObject("listarTarefaTempo", array);
+		
 		
 		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
 		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
 				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
 		
+		
+		
+		for(Tarefa tarefa : listaTarefaMes) {
+			array.add(tarefaRepository.tarefaByTempo(tarefa.getId()));			
+		}	
+		modelAndView.addObject("listaTempoTarefa",array);
 		return modelAndView;
 	}
 

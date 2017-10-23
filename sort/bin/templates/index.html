@@ -112,21 +112,20 @@
 											</tr>
 										</thead>
 										<tbody>
-
+											
 											<tr th:each="tarefa,row : ${listarTarefasMes}">
 												<td th:text="${row.count}"></td>
 												<td th:text="${tarefa.numeroTarefa}"></td>
 												<td
 													th:text="${#calendars.format(tarefa.fimTeste,'dd MMMM yyyy')}"></td>
 												<td th:text="${tarefa.usuario.nome}"></td>
-												<!-- <td th:text="${tarefa.qtdErros}"></td> -->
+												
 
 												<td th:switch="${tarefa.erroCaminhoFeliz}"><b
-													th:case="true">Sim</b> <b th:case="FALSE">N&atilde;o</b></td>
+													th:case="true">Sim</b> <b th:case="false">Não</b></td>
 
 												<td th:text="${tarefa.fluxo.nome}"></td>
 												<td th:text="${tarefa.modulo.nome}"></td>
-												<!-- <td th:text="${tarefa.erroTipo.nome}"></td> -->
 												<td th:text="${tarefa.status.nome}"></td>
 
 												<td th:switch="${tarefa.status.id}">
@@ -136,12 +135,12 @@
 											
 											
 												<div class="m-t-md" th:replace="modals :: modal-tarefa"></div>								
-											
+										
 												
 												</td>
 
 											</tr>
-											
+																				
 
 										</tbody>
 									</table>

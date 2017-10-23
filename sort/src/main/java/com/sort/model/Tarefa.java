@@ -70,7 +70,7 @@ public class Tarefa implements Serializable {
 	private Date fimTeste;
 
 	@Column(name = "tar_tempo")
-	private Double tempoGasto;
+	private Date tempoGasto;
 
 	@Column(name = "tar_descricao")
 	private String descricao;
@@ -297,12 +297,14 @@ public class Tarefa implements Serializable {
 		this.tarefaParentesco = tarefaParentesco;
 	}
 
-	public Double getTempoGasto() {
+	public Date getTempoGasto() {
 		return tempoGasto;
 	}
 
-	public void setTempoGasto(Double tempoGasto) {
+	public void setTempoGasto(Date tempoGasto) {
 		this.tempoGasto = tempoGasto;
 	}
+
+	
 
 }

@@ -2,6 +2,7 @@ package com.sort.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -74,7 +75,19 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 		}
 
 		tarefaRepository.saveAndFlush(tarefa);
-
+	//	tarefa.setTempoGasto(Double.valueOf(tarefaRepository.findOne(tarefa.getId())));
+	}
+	
+	public void salvaTempoTarefa() {
+		
+		ArrayList<Object> array = new ArrayList<>();
+		List<Tarefa> listaTarefa = tarefaService.findAllTarefa();
+		
+		for(Tarefa tarefa : listaTarefa) {
+			array.add(tarefaRepository.tarefaByTempo(tarefa.getId()));
+			
+		}		
+		
 	}
 
 	public Date toDate(String dateConvert) throws ParseException {
