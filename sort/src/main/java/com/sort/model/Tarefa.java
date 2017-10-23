@@ -26,12 +26,6 @@ public class Tarefa implements Serializable {
 	@Column(name = "tar_id")
 	private Long id;
 
-	@Column(name = "tar_codigo")
-	private Long codigo;
-
-	@Column(name = "tar_qtd_erros")
-	private int qtdErros;
-
 	@Column(name = "tar_sev_1")
 	private Integer severidade1;
 
@@ -69,9 +63,6 @@ public class Tarefa implements Serializable {
 	@Column(name = "tar_data_fim_tarefa")
 	private Date fimTeste;
 
-	@Column(name = "tar_tempo")
-	private Date tempoGasto;
-
 	@Column(name = "tar_descricao")
 	private String descricao;
 
@@ -98,10 +89,6 @@ public class Tarefa implements Serializable {
 	private TarefaTipo tipo;
 
 	@ManyToOne
-	@JoinColumn(name = "etp_id")
-	private ErroTipo erroTipo;
-
-	@ManyToOne
 	@JoinColumn(name = "tpa_id")
 	private TarefaParentesco tarefaParentesco;
 
@@ -111,22 +98,6 @@ public class Tarefa implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
-
-	public int getQtdErros() {
-		return qtdErros;
-	}
-
-	public void setQtdErros(int qtdErros) {
-		this.qtdErros = qtdErros;
 	}
 
 	public Integer getSeveridade1() {
@@ -281,14 +252,6 @@ public class Tarefa implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public ErroTipo getErroTipo() {
-		return erroTipo;
-	}
-
-	public void setErroTipo(ErroTipo erroTipo) {
-		this.erroTipo = erroTipo;
-	}
-
 	public TarefaParentesco getTarefaParentesco() {
 		return tarefaParentesco;
 	}
@@ -296,15 +259,5 @@ public class Tarefa implements Serializable {
 	public void setTarefaParentesco(TarefaParentesco tarefaParentesco) {
 		this.tarefaParentesco = tarefaParentesco;
 	}
-
-	public Date getTempoGasto() {
-		return tempoGasto;
-	}
-
-	public void setTempoGasto(Date tempoGasto) {
-		this.tempoGasto = tempoGasto;
-	}
-
-	
 
 }
