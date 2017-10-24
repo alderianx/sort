@@ -16,12 +16,4 @@ public class LoginController extends SortAbstractController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView home() {
-
-		ModelAndView modelAndView = new ModelAndView("index");
-		modelAndView = getHome();		
-		return modelAndView;
-	}
-
 }

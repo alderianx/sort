@@ -2,7 +2,6 @@ package com.sort.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -21,8 +20,6 @@ import com.sort.repository.StatusRepository;
 import com.sort.repository.TarefaRepository;
 import com.sort.repository.TarefaTipoRepository;
 import com.sort.repository.UsuarioRepository;
-
-
 
 @Service("tarefaService")
 public class TarefaServiceImpl extends SortAbstractController implements TarefaService {
@@ -45,7 +42,6 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 	@Autowired
 	private TarefaTipoRepository tarefaTipoRepository;
 
-		
 	@Override
 	public void saveTarefa(TarefaCadastroForm tarefaCadastroForm) {
 		Tarefa tarefa = new Tarefa();
@@ -53,12 +49,12 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 		Calendar calFim = Calendar.getInstance();
 		try {
 			tarefa.setUsuario(usuarioRepository.findOne(user.getId()));
-			
+
 			tarefa.setInicioTeste(toDate(tarefaCadastroForm.getInicioTeste()));
 			tarefa.setFimTeste(calFim.getTime());
 			tarefa.setNumeroTarefa(Long.parseLong(tarefaCadastroForm.getNumeroTarefa()));
-			tarefa.setErroCaminhoFeliz(tarefaCadastroForm.isErroCaminhoFeliz());			
-			
+			tarefa.setErroCaminhoFeliz(tarefaCadastroForm.isErroCaminhoFeliz());
+
 			tarefa.setSeveridade1(tarefaCadastroForm.getSeveridade1());
 			tarefa.setSeveridade2(tarefaCadastroForm.getSeveridade2());
 			tarefa.setSeveridade3(tarefaCadastroForm.getSeveridade3());
@@ -68,26 +64,13 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 			tarefa.setFluxo(fluxoRepository.findByNome(tarefaCadastroForm.getFluxo()));
 			tarefa.setModulo(moduloRepository.findByNome(tarefaCadastroForm.getModulo()));
 			tarefa.setTipo(tarefaTipoRepository.findByNome(tarefaCadastroForm.getTipo()));
-	
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 
 		tarefaRepository.saveAndFlush(tarefa);
-	//	tarefa.setTempoGasto(Double.valueOf(tarefaRepository.findOne(tarefa.getId())));
-	}
-	
-	public void salvaTempoTarefa() {
-		
-		ArrayList<Object> array = new ArrayList<>();
-		List<Tarefa> listaTarefa = tarefaService.findAllTarefa();
-		
-		for(Tarefa tarefa : listaTarefa) {
-			array.add(tarefaRepository.tarefaByTempo(tarefa.getId()));
-			
-		}		
-		
+
 	}
 
 	public Date toDate(String dateConvert) throws ParseException {
@@ -98,7 +81,7 @@ public class TarefaServiceImpl extends SortAbstractController implements TarefaS
 
 	@Override
 	public List<Tarefa> findAllTarefa() {
-		return	tarefaRepository.findAll();		
+		return tarefaRepository.findAll();
 	}
 
 }

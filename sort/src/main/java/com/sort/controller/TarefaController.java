@@ -1,7 +1,5 @@
 package com.sort.controller;
 
-import java.util.ArrayList;
-
 /**@author Alderian**/
 
 import java.util.Calendar;
@@ -55,30 +53,13 @@ public class TarefaController extends SortAbstractController {
 
 	@Autowired
 	private ErroTipoRepository erroTipoRepository;
-	
 
-	@RequestMapping(value = "/listarTarefa", method = RequestMethod.GET)
+	@RequestMapping(value = { "/index", "/listarTarefa" }, method = RequestMethod.GET)
 	public ModelAndView listarTarefas() {
-		ArrayList<Object> array = new ArrayList<>();
-		ModelAndView modelAndView = new ModelAndView("index");
-		List<Tarefa> listaTarefaMes = tarefaRepository.tarefaByFimTeste();
-		modelAndView.addObject("listarTarefasMes", listaTarefaMes);
-	
-		List<Tarefa> listaTarefa = tarefaService.findAllTarefa();
-		modelAndView.addObject("listarTarefas", listaTarefa);
-		
-		
-		
-		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
-		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
-				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
-		
-		
-		
-		for(Tarefa tarefa : listaTarefaMes) {
-			array.add(tarefaRepository.tarefaByTempo(tarefa.getId()));			
-		}	
-		modelAndView.addObject("listaTempoTarefa",array);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
+		carregarTestes(modelAndView);
+		carregarUsuarioLogado(modelAndView);
 		return modelAndView;
 	}
 
@@ -88,10 +69,8 @@ public class TarefaController extends SortAbstractController {
 
 		List<Tarefa> listaTarefaUsuario = tarefaRepository.tarefaByUsuario(getUsuarioLogado().getId());
 		modelAndView.addObject("listarTarefasUsuario", listaTarefaUsuario);
-		
-		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
-		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
-				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
+
+		carregarUsuarioLogado(modelAndView);
 		return modelAndView;
 	}
 
@@ -122,9 +101,7 @@ public class TarefaController extends SortAbstractController {
 
 		modelAndView.addObject("tarefaCadastroForm", tarefaCadastroForm);
 
-		modelAndView.addObject("userTipo", getUsuarioLogado().getUsuarioTipo().getId());
-		modelAndView.addObject("userName", "Bem vindo" + ", " + getUsuarioLogado().getNome().toUpperCase() + " ["
-				+ getUsuarioLogado().getEmail() + "]" + " [" + getUsuarioLogado().getUsuarioTipo().getNome() + "]");
+		carregarUsuarioLogado(modelAndView);
 		return modelAndView;
 	}
 
@@ -144,5 +121,7 @@ public class TarefaController extends SortAbstractController {
 		redirectAttributes.addFlashAttribute("successMessage", "Tarefa cadastrada com sucesso.");
 		return modelAndView;
 	}
+
+	
 
 }
