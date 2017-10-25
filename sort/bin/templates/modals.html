@@ -61,6 +61,65 @@
 						</div>	
 						
 						
+							
+							<div class="col-md-6">
+							
+<form th:object="${tarefaCadastroForm}"
+  method="post">
+  <fieldset>
+    <table style="width: 500px">
+      <tr th:each="item : ${chosen}">
+        <td>
+          <div>
+            <div>
+              <label th:text="${item}">example</label>
+              <input type="radio" th:name="${'priorities[' + item + ']'}" value="a" />A
+              <input type="radio" th:name="${'priorities[' + item + ']'}" value="b" />B
+              <input type="radio" th:name="${'priorities[' + item + ']'}" value="c" />C
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <button type="submit"
+            class="btn btn-xs btn-primary margin10-right paddingNew"
+            name="save">Calculate!</button>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </fieldset>
+</form>
+							<div class="row" th:switch="${tarefa.status.id}">
+                                    <div class="col-sm-6">
+                                        <div  class="radio radio-danger">
+                                            <input type="radio" name="radio1" id="radio1" value="1" th:checked="${tarefa.status.id} == 1" />
+                                            <label for="radio1">
+                                               erro
+                                            </label>
+                                        </div>
+                                        <div  class="radio radio-success">
+                                            <input type="radio" name="radio1" id="radio2" value="2"/>
+                                            <label for="radio2">
+                                               validado
+                                            </label>
+                                        </div>
+                                        <div  class="radio radio-warning">
+                                            <input type="radio" name="radio1" id="radio3"  value="3"/>
+                                            <label for="radio3">
+                                                incompleto
+                                            </label>
+                                        </div>
+                                    </div>                                    
+                            </div>
+						</div>
+						
+						
 						<div class="col-md-6">
 						<p class="m-t-none">Erros visuais:</p>
 						<h4 class="m-t-xs" th:text="${tarefa.severidade4}"></h4>
@@ -221,7 +280,7 @@
 						</div>
 							
 						
-						<div class="col-md-4">					
+						<div class="col-md-6">					
 						<p class="m-t-none">Tempo gasto:</p>
 						<h4 class="m-t-xs" th:text="${#calendars.format(listaTempoTarefa[(row.count)-1],'HH:mm:ss')}" ></h4>
 						</div> 
@@ -232,6 +291,32 @@
 						<h4 class="m-t-xs" th:text="${tarefa.status.nome}"></h4>
 						</div>	
 						
+						<div class="col-md-6">
+							<div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="radio radio-danger">
+                                            <input type="radio" name="radio1" id="radio1" value="1" checked="checked"/>
+                                            <label for="radio1">
+                                               erro
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-success">
+                                            <input type="radio" name="radio1" id="radio2" value="2"/>
+                                            <label for="radio2">
+                                               validado
+                                            </label>
+                                        </div>
+                                        <div class="radio radio-warning">
+                                            <input type="radio" name="radio1" id="radio3"  value="3"/>
+                                            <label for="radio3">
+                                                incompleto
+                                            </label>
+                                        </div>
+                                    </div>                                    
+                            </div>
+						</div>
+						<!-- <input type="radio"	th:field="*{tarefa.status.id}" value="true" />Sim
+						<input type="radio" th:field="*{tarefa.status.id}" value="false" />Não -->
 						
 						<div class="col-md-6">
 						<p class="m-t-none">Erros visuais:</p>

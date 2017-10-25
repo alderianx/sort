@@ -9,6 +9,7 @@ import com.sort.model.TarefaStatus;
 
 @Repository("statusRepository")
 public interface StatusRepository extends JpaRepository<TarefaStatus, Long> {
+	
 	TarefaStatus findByNome(String nome);
 
 }

@@ -121,6 +121,24 @@ public class TarefaController extends SortAbstractController {
 		redirectAttributes.addFlashAttribute("successMessage", "Tarefa cadastrada com sucesso.");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/alterarTarefa", method = RequestMethod.POST)
+	public ModelAndView alterarTarefa(@Valid TarefaCadastroForm tarefaCadastroForm, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes) {
+		ModelAndView modelAndView = new ModelAndView();
+
+		if (bindingResult.hasErrors()) {
+			return novaTarefa(tarefaCadastroForm);
+		} else {
+			//tarefaRepository.getOne
+			tarefaService.saveTarefa(tarefaCadastroForm);
+			modelAndView.addObject("tarefaCadastroForm", new TarefaCadastroForm());
+
+		}
+		
+		redirectAttributes.addFlashAttribute("successMessage", "status alterado com sucesso.");
+		return modelAndView;
+	}
 
 	
 
