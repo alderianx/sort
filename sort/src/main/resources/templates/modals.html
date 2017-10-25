@@ -7,8 +7,8 @@
 <!-- Modal de tarefas da pagina de index -->
 <div th:fragment="modal-tarefa" class="modal fade"	th:id="'myModal' + ${row.count}" tabindex="-1" role="dialog" aria-hidden="true">
 
-	<div th:switch="${tarefa.status.id}">
-		<div th:case='1' class='modal-dialog panel panel-filled panel-c-danger'>
+	<div >
+		<div id="item" th:attr="class='${tarefa.status.id}'" >
 			<div class="modal-content">
 				<div class="modal-header text-center" >
 					<h4 class="modal-title"
@@ -63,42 +63,10 @@
 						
 							
 							<div class="col-md-6">
-							
-<form th:object="${tarefaCadastroForm}"
-  method="post">
-  <fieldset>
-    <table style="width: 500px">
-      <tr th:each="item : ${chosen}">
-        <td>
-          <div>
-            <div>
-              <label th:text="${item}">example</label>
-              <input type="radio" th:name="${'priorities[' + item + ']'}" value="a" />A
-              <input type="radio" th:name="${'priorities[' + item + ']'}" value="b" />B
-              <input type="radio" th:name="${'priorities[' + item + ']'}" value="c" />C
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <button type="submit"
-            class="btn btn-xs btn-primary margin10-right paddingNew"
-            name="save">Calculate!</button>
-        </td>
-        <td></td>
-      </tr>
-    </table>
-  </fieldset>
-</form>
 							<div class="row" th:switch="${tarefa.status.id}">
                                     <div class="col-sm-6">
                                         <div  class="radio radio-danger">
-                                            <input type="radio" name="radio1" id="radio1" value="1" th:checked="${tarefa.status.id} == 1" />
+                                            <input type="radio" name="radio1" id="radio1" value="1" th:checked="checked" />
                                             <label for="radio1">
                                                erro
                                             </label>
@@ -154,7 +122,7 @@
 			</div>
 		</div>
 
-		<div th:case="2" class="modal-dialog panel panel-filled panel-c-success">
+		<!-- <div th:case="2" class="modal-dialog panel panel-filled panel-c-success">
 			<div class="modal-content">
 				<div class="modal-header text-center" >
 					<h4 class="modal-title"
@@ -233,12 +201,12 @@
 				<div class="modal-footer">
 			
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
+					 <button type="button" class="btn btn-accent">Save changes</button>
 				</div>
 			</div>
 		</div>
-
-		<div th:case="3" class="modal-dialog panel panel-filled panel-c-warning">
+ -->
+		<!-- <div th:case="3" class="modal-dialog panel panel-filled panel-c-warning">
 
 			<div class="modal-content">
 				<div class="modal-header text-center" >
@@ -315,8 +283,8 @@
                                     </div>                                    
                             </div>
 						</div>
-						<!-- <input type="radio"	th:field="*{tarefa.status.id}" value="true" />Sim
-						<input type="radio" th:field="*{tarefa.status.id}" value="false" />Não -->
+						<input type="radio"	th:field="*{tarefa.status.id}" value="true" />Sim
+						<input type="radio" th:field="*{tarefa.status.id}" value="false" />Não
 						
 						<div class="col-md-6">
 						<p class="m-t-none">Erros visuais:</p>
@@ -345,10 +313,10 @@
 				<div class="modal-footer">
 			
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
+					 <button type="button" class="btn btn-accent">Save changes</button>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 
 	</div>
@@ -356,6 +324,22 @@
 <!-- Fim modal de tarefas da pagina de index -->
 
 
+<script type="text/javascript">
+		function trocaClasse() {
+			
+			var elm = document.getElementById('item');
+
+			if(elm.className === '1'){
+			     elm.className = 'modal-dialog panel panel-filled panel-c-danger';
+			} else if(elm.className === '2'){
+				 elm.className = 'modal-dialog panel panel-filled panel-c-success';
+			} else if(elm.className === '3'){
+				 elm.className = 'modal-dialog panel panel-filled panel-c-warning';
+			}
+			
+		}
+		  
+</script>
 
 
 </html>

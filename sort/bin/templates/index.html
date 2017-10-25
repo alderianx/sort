@@ -128,10 +128,11 @@
 												<td th:text="${tarefa.modulo.nome}"></td>
 												<td th:text="${tarefa.status.nome}"></td>
 
-												<td th:switch="${tarefa.status.id}">
-												<a th:case="1" href="#" class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>
-												<a th:case="2" href="#" class="btn btn-success btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a> 
-												<a th:case="3" href="#" class="btn btn-warning btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>
+												<td th:switch="${tarefa.status.id}">												
+												
+												<a  onclick="trocaClasse();" th:case="1" href="#" class="btn btn-danger btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>
+												<a  onclick="trocaClasse();" th:case="2" href="#" class="btn btn-success btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a> 
+												<a  onclick="trocaClasse();" th:case="3" href="#" class="btn btn-warning btn-xs" data-toggle="modal" th:attr="data-target='#myModal'+${row.count}">Ver</a>
 											
 											
 												<div class="m-t-md" th:replace="modals :: modal-tarefa"></div>								
