@@ -8,7 +8,7 @@
 <div th:fragment="modal-tarefa" class="modal fade"	th:id="'myModal' + ${row.count}" tabindex="-1" role="dialog" aria-hidden="true">
 
 	<div >
-		<div id="item" th:attr="class='${tarefa.status.id}'" >
+		<div  th:attr="class=${tarefa.status.id}"  th:name="${tarefa.status.id}" >
 			<div class="modal-content">
 				<div class="modal-header text-center" >
 					<h4 class="modal-title"
@@ -58,27 +58,25 @@
 						<div class="col-md-6">
 						<p class="m-t-none">Status:</p>
 						<h4 class="m-t-xs" th:text="${tarefa.status.nome}"></h4>
-						</div>	
-						
-						
+						</div>							
 							
-							<div class="col-md-6">
-							<div class="row" th:switch="${tarefa.status.id}">
+						<div class="col-md-6">
+							<div th:attr="class=${tarefa.status.id}" >
                                     <div class="col-sm-6">
                                         <div  class="radio radio-danger">
-                                            <input type="radio" name="radio1" id="radio1" value="1" th:checked="checked" />
+                                            <input type="radio" name="radio1" id="radio1"  />
                                             <label for="radio1">
                                                erro
                                             </label>
                                         </div>
                                         <div  class="radio radio-success">
-                                            <input type="radio" name="radio1" id="radio2" value="2"/>
+                                            <input type="radio" name="radio1" id="radio2"  />
                                             <label for="radio2">
                                                validado
                                             </label>
                                         </div>
                                         <div  class="radio radio-warning">
-                                            <input type="radio" name="radio1" id="radio3"  value="3"/>
+                                            <input type="radio" name="radio1" id="radio3"  />
                                             <label for="radio3">
                                                 incompleto
                                             </label>
@@ -122,201 +120,7 @@
 			</div>
 		</div>
 
-		<!-- <div th:case="2" class="modal-dialog panel panel-filled panel-c-success">
-			<div class="modal-content">
-				<div class="modal-header text-center" >
-					<h4 class="modal-title"
-						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-					<small th:text="${tarefa.nome}"></small>
-				</div>
-														
-				<div class="modal-body">
-										
-					<div class="row">
-						
-						<div class="col-md-6">
-							<p class="m-t-none">Nome do testador:</p>
-							<h4 th:text="${tarefa.usuario.nome}"></h4>							
-						</div>
-						
-						<div class="col-md-6">
-							<p class="m-t-none">Data do teste:</p>
-							<h4 class="m-t-xs" th:text="${#calendars.format(tarefa.fimTeste,'dd/MM/yyyy')}"></h4>
-						</div>
-												
-						<div class="col-md-6">
-							<p class="m-t-none">Erro no caminho feliz:</p>
-							<h4 class="m-t-xs" th:switch="${tarefa.erroCaminhoFeliz}">
-							<b	th:case="true">Sim</b> <b th:case="false">N&atilde;o</b>
-							
-							</h4>		
-						</div>
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Fluxo:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.fluxo.nome}"></h4>
-						</div>
-					
-						<div class="col-md-6">
-						<p class="m-t-none">Módulo:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.modulo.nome}"></h4>
-						</div>							
-						
-						<div class="col-md-4">					
-						<p class="m-t-none">Tempo gasto:</p>
-						<h4 class="m-t-xs" th:text="${#calendars.format(listaTempoTarefa[(row.count)-1],'HH:mm:ss')}" ></h4>
-						</div> 
-						
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Status:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.status.nome}"></h4>
-						</div>	
-						
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Erros visuais:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.severidade4}"></h4>
-						</div>
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Erros de navega&ccedil;&atilde;o:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.severidade3}"></h4>
-						</div>	
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Erros de neg&oacute;cio:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.severidade2}"></h4>
-						</div>	
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Comportamento inesperado:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.severidade1}"></h4>
-						</div>								
-						
-					</div>
-					
-				</div>					
-						<div class="text-center" ><p class="text-center">Total de <b th:text="${tarefa.severidade4+tarefa.severidade3+tarefa.severidade2+tarefa.severidade1}"></b> erros encontrados na tarefa</p></div>
-				<div class="modal-footer">
-			
-					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					 <button type="button" class="btn btn-accent">Save changes</button>
-				</div>
-			</div>
-		</div>
- -->
-		<!-- <div th:case="3" class="modal-dialog panel panel-filled panel-c-warning">
-
-			<div class="modal-content">
-				<div class="modal-header text-center" >
-					<h4 class="modal-title"
-						th:text="'Tarefa ' + ${tarefa.numeroTarefa}"></h4>
-					<small th:text="${tarefa.nome}"></small>
-				</div>
-														
-				<div class="modal-body">
-										
-					<div class="row">
-						
-						<div class="col-md-6">
-							<p class="m-t-none">Nome do testador:</p>
-							<h4 th:text="${tarefa.usuario.nome}"></h4>							
-						</div>
-						
-						<div class="col-md-6">
-							<p class="m-t-none">Data do teste:</p>
-							<h4 class="m-t-xs" th:text="${#calendars.format(tarefa.fimTeste,'dd/MM/yyyy')}"></h4>
-						</div>
-												
-						<div class="col-md-6">
-							<p class="m-t-none">Erro no caminho feliz:</p>
-							<h4 class="m-t-xs" th:switch="${tarefa.erroCaminhoFeliz}">
-							<b	th:case="true">Sim</b> <b th:case="false">Não</b>
-							
-							</h4>		
-						</div>
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Fluxo:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.fluxo.nome}"></h4>
-						</div>
-					
-						<div class="col-md-6">
-						<p class="m-t-none">M&oacute;dulo:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.modulo.nome}"></h4>
-						</div>
-							
-						
-						<div class="col-md-6">					
-						<p class="m-t-none">Tempo gasto:</p>
-						<h4 class="m-t-xs" th:text="${#calendars.format(listaTempoTarefa[(row.count)-1],'HH:mm:ss')}" ></h4>
-						</div> 
-						
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Status:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.status.nome}"></h4>
-						</div>	
-						
-						<div class="col-md-6">
-							<div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="radio radio-danger">
-                                            <input type="radio" name="radio1" id="radio1" value="1" checked="checked"/>
-                                            <label for="radio1">
-                                               erro
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-success">
-                                            <input type="radio" name="radio1" id="radio2" value="2"/>
-                                            <label for="radio2">
-                                               validado
-                                            </label>
-                                        </div>
-                                        <div class="radio radio-warning">
-                                            <input type="radio" name="radio1" id="radio3"  value="3"/>
-                                            <label for="radio3">
-                                                incompleto
-                                            </label>
-                                        </div>
-                                    </div>                                    
-                            </div>
-						</div>
-						<input type="radio"	th:field="*{tarefa.status.id}" value="true" />Sim
-						<input type="radio" th:field="*{tarefa.status.id}" value="false" />Não
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Erros visuais:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.severidade4}"></h4>
-						</div>
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Erros de navega&ccedil;&atilde;o:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.severidade3}"></h4>
-						</div>	
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Erros de negócio:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.severidade2}"></h4>
-						</div>	
-						
-						<div class="col-md-6">
-						<p class="m-t-none">Comportamento inesperado:</p>
-						<h4 class="m-t-xs" th:text="${tarefa.severidade1}"></h4>
-						</div>										
-						
-					</div>
-					
-				</div>					
-						<div class="text-center" ><p class="text-center">Total de <b th:text="${tarefa.severidade4+tarefa.severidade3+tarefa.severidade2+tarefa.severidade1}"></b> erros encontrados na tarefa</p></div>
-				<div class="modal-footer">
-			
-					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					 <button type="button" class="btn btn-accent">Save changes</button>
-				</div>
-			</div>
-		</div> -->
+		
 
 
 	</div>
@@ -324,22 +128,7 @@
 <!-- Fim modal de tarefas da pagina de index -->
 
 
-<script type="text/javascript">
-		function trocaClasse() {
-			
-			var elm = document.getElementById('item');
 
-			if(elm.className === '1'){
-			     elm.className = 'modal-dialog panel panel-filled panel-c-danger';
-			} else if(elm.className === '2'){
-				 elm.className = 'modal-dialog panel panel-filled panel-c-success';
-			} else if(elm.className === '3'){
-				 elm.className = 'modal-dialog panel panel-filled panel-c-warning';
-			}
-			
-		}
-		  
-</script>
 
 
 </html>

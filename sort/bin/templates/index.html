@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: css-head"><meta charset="utf-8" /></head>
+<head th:replace="layout :: css-head"><meta charset="utf-8" />
+</head>
 <body>
 
 	<!-- Wrapper-->
@@ -161,7 +162,16 @@
 	<!-- End wrapper-->
 
 	<div th:replace="layout :: script-footer"></div>
-	<script src="scripts\sparklinecharts.js"></script>
+	
+	<script type="text/javascript">
+		function trocaClasse() {
+			$("[name='1']").addClass('modal-dialog panel panel-filled panel-c-danger');
+			$("[name='2']").addClass('modal-dialog panel panel-filled panel-c-success');
+			$("[name='3']").addClass('modal-dialog panel panel-filled panel-c-warning');
+			
+		}
+		  
+</script>
 </body>
 
 </html>
