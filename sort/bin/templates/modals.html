@@ -8,7 +8,7 @@
 <div th:fragment="modal-tarefa" class="modal fade"	th:id="'myModal' + ${row.count}" tabindex="-1" role="dialog" aria-hidden="true">
 
 	<div >
-		<div  th:attr="class=${tarefa.status.id}"  th:name="${tarefa.status.id}" >
+		<div  class="${tarefa.status.id}"  th:name="${tarefa.status.id}" >
 			<div class="modal-content">
 				<div class="modal-header text-center" >
 					<h4 class="modal-title"
@@ -61,22 +61,22 @@
 						</div>							
 							
 						<div class="col-md-6">
-							<div th:attr="class=${tarefa.status.id}" >
+							<div class="${tarefa.status.id}" >
                                     <div class="col-sm-6">
                                         <div  class="radio radio-danger">
-                                            <input type="radio" name="radio1" id="radio1"  />
+                                            <input type="radio" name="radio1"  checked="checked" />
                                             <label for="radio1">
                                                erro
                                             </label>
                                         </div>
                                         <div  class="radio radio-success">
-                                            <input type="radio" name="radio1" id="radio2"  />
+                                            <input type="radio" name="radio1"  />
                                             <label for="radio2">
                                                validado
                                             </label>
                                         </div>
                                         <div  class="radio radio-warning">
-                                            <input type="radio" name="radio1" id="radio3"  />
+                                            <input type="radio" name="radio1" />
                                             <label for="radio3">
                                                 incompleto
                                             </label>
@@ -115,7 +115,7 @@
 				<div class="modal-footer">
 			
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-					<!--  <button type="button" class="btn btn-accent">Save changes</button> -->
+					  <button type="button" class="btn btn-accent">Alterar</button> 
 				</div>
 			</div>
 		</div>
