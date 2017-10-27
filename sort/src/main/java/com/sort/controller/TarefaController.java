@@ -139,6 +139,17 @@ public class TarefaController extends SortAbstractController {
 		redirectAttributes.addFlashAttribute("successMessage", "status alterado com sucesso.");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/listarRankingTarefaUsuario", method = RequestMethod.GET)
+	public ModelAndView listarRankingTarefasUsuario() {
+		ModelAndView modelAndView = new ModelAndView("ranking");
+
+		List<Tarefa> listaRankingTarefaUsuario = tarefaRepository.quantidadeTarefasByUsuario();// tarefaByUsuario(getUsuarioLogado().getId());
+		modelAndView.addObject("listarRankingTarefasUsuario", listaRankingTarefaUsuario);
+
+		carregarUsuarioLogado(modelAndView);
+		return modelAndView;
+	}
 
 	
 

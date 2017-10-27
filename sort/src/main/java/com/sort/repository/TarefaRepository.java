@@ -23,7 +23,7 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 	public List<Object> tarefaByTempo(Long id);
 
 	@Query("SELECT ta.usuario.nome, Count(ta.id) AS total FROM Tarefa ta GROUP BY ta.usuario.nome ORDER BY total DESC")
-	public List<Object> quantidadeTarefasByUsuario();
+	public List<Tarefa> quantidadeTarefasByUsuario();
 
 	@Query("UPDATE Tarefa tar SET tar.status.id = :tarefa WHERE tar.id = :id ")
 	public Tarefa alteraStatusTarefaById(Long id, Tarefa tarefa);
