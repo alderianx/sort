@@ -194,7 +194,8 @@
 										<div class="form-group col-lg-3"
 											th:classappend="${#fields.hasErrors('severidade2')} ? has-error">
 											<label for="severidade2" class="control-label">N&ordm;
-												de Erros de Neg&oacute;cio Encontrados:</label><input class="form-control " min="0"
+												de Erros de Neg&oacute;cio Encontrados:</label>
+												<input class="form-control " min="0"
 												max="9999999" type="number" th:field="*{severidade2}" placeholder="0" value="0" /> <span
 												class="help-block small"></span>
 										</div>
@@ -203,7 +204,8 @@
 											th:classappend="${#fields.hasErrors('severidade1')} ? has-error">
 											<label for="severidade1" class="control-label">N&ordm;
 												de Erros de C.I Encontrados:</label>
-												<input class="form-control " min="0" max="9999999" type="number" th:field="*{severidade1}" /> 
+												<input class="form-control " min="0" max="9999999" type="number" th:field="*{severidade1}"
+												placeholder="0" value="0" /> 
 												  <span	class="help-block small"></span>
 												   
 										</div>
